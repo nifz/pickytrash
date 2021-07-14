@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "445b2b56036f4fb3c253035674db75e4",
+    "content-hash": "618da0357c1f50d68e1fac14e5e00c5c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -860,6 +860,109 @@
                 "source": "https://github.com/guzzle/psr7/tree/2.0.0"
             },
             "time": "2021-06-30T20:03:07+00:00"
+        },
+        {
+            "name": "infyomlabs/laravel-generator-helpers",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/laravel-generator-helpers.git",
+                "reference": "3312c415abf79ae5eac2002b3e32072533049fcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator-helpers/zipball/3312c415abf79ae5eac2002b3e32072533049fcc",
+                "reference": "3312c415abf79ae5eac2002b3e32072533049fcc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\GeneratorHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Helper functions for laravel generator packages",
+            "support": {
+                "issues": "https://github.com/InfyOmLabs/laravel-generator-helpers/issues",
+                "source": "https://github.com/InfyOmLabs/laravel-generator-helpers/tree/v3.0.0"
+            },
+            "time": "2020-09-13T04:41:04+00:00"
+        },
+        {
+            "name": "infyomlabs/laravel-ui-stisla",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/laravel-ui-stisla.git",
+                "reference": "f00022455cae4306f8559470bc421669f9a98f15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-ui-stisla/zipball/f00022455cae4306f8559470bc421669f9a98f15",
+                "reference": "f00022455cae4306f8559470bc421669f9a98f15",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "infyomlabs/laravel-generator-helpers": "^3.0",
+                "laravel/ui": "^3.0",
+                "php": "^7.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "InfyOm\\StislaPreset\\StislaPresetServiceProvider",
+                        "InfyOm\\StislaPreset\\FortifyStislaPresetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\StislaPreset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Laravel frontend preset for Stisla Theme",
+            "keywords": [
+                "laravel",
+                "preset",
+                "stisla"
+            ],
+            "support": {
+                "issues": "https://github.com/InfyOmLabs/laravel-ui-stisla/issues",
+                "source": "https://github.com/InfyOmLabs/laravel-ui-stisla/tree/v3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/infyomlabs",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-12-19T04:24:47+00:00"
         },
         {
             "name": "laravel/framework",

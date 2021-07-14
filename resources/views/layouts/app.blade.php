@@ -1,83 +1,82 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 4.1.1 -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
+    <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@yield('page_css')
+<!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
+    @yield('page_css')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            @include('layouts.header')
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
         </nav>
-
-        <main class="py-4">
+        <div class="main-sidebar main-sidebar-postion">
+            @include('layouts.sidebar')
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
             @yield('content')
-        </main>
+        </div>
+        <footer class="main-footer">
+            @include('layouts.footer')
+        </footer>
     </div>
+</div>
+
+@include('profile.change_password')
+@include('profile.edit_profile')
+
 </body>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+
+<!-- Template JS File -->
+<script src="{{ asset('web/js/stisla.js') }}"></script>
+<script src="{{ asset('web/js/scripts.js') }}"></script>
+<script src="{{ mix('assets/js/profile.js') }}"></script>
+<script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+@yield('page_js')
+@yield('scripts')
+<script>
+    let loggedInUser =@json(\Illuminate\Support\Facades\Auth::user());
+    let loginUrl = '{{ route('login') }}';
+    // Loading button plugin (removed from BS4)
+    (function ($) {
+        $.fn.button = function (action) {
+            if (action === 'loading' && this.data('loading-text')) {
+                this.data('original-text', this.html()).html(this.data('loading-text')).prop('disabled', true);
+            }
+            if (action === 'reset' && this.data('original-text')) {
+                this.html(this.data('original-text')).prop('disabled', false);
+            }
+        };
+    }(jQuery));
+</script>
 </html>
