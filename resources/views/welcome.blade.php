@@ -1,132 +1,673 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
+    <title>{{ config('app.name') }}</title>
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="https://syntx.id/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://syntx.id/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <style>
+        body, html{
+        height: 100%;
+        width: 100%;
+        font-family: 'Mulish', sans-serif;
+        }
+ 		.navbar{
+ 			z-index: 2;
+ 			transition: 0.5s;
+ 			background-color: rgba(255, 255, 255, 0);
+ 		}
+        .text-warning
+        {
+            color: #F9F871 !important;
+        }
+        .border-bold
+        {
+            border-width: 3px !important;
+        }
+        .bg-team
+        {
+            background-image: url('img/team/bg.png');
+            padding: 50px 0px 30px 0px;
+			background-repeat:no-repeat;
+ 			position: relative;
+        }
+        .nav-item .active
+        {
+            color: #F9F871 !important;
+        }
+        a.text-primary:focus, a.text-primary:hover{
+            color: #4457b5 !important;
+        }
+ 		#fa_bars{
+ 			color:#000;
+ 		}
+        .bg-dark
+        {
+            background-color: #333331 !important;
+        }
+        .text-bold
+        {
+            font-weight: bold;
+        }
+        .text-primary
+        {
+            color: #4457b5 !important;
+        }
+        .text-success
+        {
+            color: #68b544 !important;
+        }
+        .btn-primary
+        {
+            background-color: #4457b5 !important;
+            border: 0 !important;
+        }
+        .btn:focus,.btn:active {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .btn-success
+        {
+            background-color: #68b544 !important;
+        }
+        .border-none
+        {
+            border: none;
+            outline: none !important;
+            box-shadow: none !important;
+        }
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
+        .btn
+        {
+            border-radius: 10px;
+        }
+        .btn-white
+        {
+            background-color: white !important;
+        }
+        .border-radius-10
+        {
+            border-radius: 10px;
+        }
+        .text-semibold
+        {
+            font-weight: 500;
+        }
+        .text-black
+        {
+            color: black;
+        }
+        .text-gray
+        {
+            color: rgba(0, 0, 0, 0.4);
+        }
+        .card_portofolio{
+            width: 100%;
+            height: 350px; 
+            background-color: white; 
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.07);
+            margin-bottom: 20px;
+            transition: 1s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card_team{
+            width: 100%;
+            background-color: white; 
+            border-radius: 10px; 
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.07);
+            margin-bottom: 20px;
+            transition: 1s;
+            position: relative;
+            overflow: hidden;
+        }
+        .aligen
+        {
+            position: absolute; 
+            top: 90%; 
+            transform: translate(0%, -70%);
+        }
+        .btn-portofolio{
+            position: relative;
+            border-radius: 5px; 
+            background-color: #4457b5; 
+            border: none; 
+            font-weight: bold; 
+            position: absolute; 
+            top: 90%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+        .btn-portofolio:before{
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 0px;
+            height: 100%;
+            background-color: #1e1e8a;
+            transform: skew(-25deg);
+            transition: .3s;
+            z-index: -1;
+        }
+        .spacer {
+            width: 100%;
+            height: 100px;
+        }
+        .spirate
+        {
+            color: rgba(0, 0, 0, 0.07);
+            font-size: 2rem;
+            top: -10px;
+            position: relative;
+        }
+        .img-team
+        {
+            height: 95%;
+        }
+        .noline
+        {
+            text-decoration: none !important;
+        }
+        .btn-grey
+        {
+            color: #fff !important;
+            background-color:#333331;
+            padding: .4rem 1.5rem !important;
+            border-radius: 0 !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-light
+            {
+                background-color: #f8f9fa!important;
             }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+            .img-team
+            {
+                width: 100%;
+            }
+            .spirate
+            {
+                display: none;
+            }
+            .abot
+            {
+                width: 100%;
+            }
+            .card_desc
+            {
+                margin-top: -120px !important;
+                background-color: #333331 !important;
+            }
+        }
+        @media (min-width: 768px) {
+            .nav-item
+            {
+                margin: 0 10px !important;
+            }
+            .title
+            {
+                font-size: 3.5rem;
+            }
+            .btn-login
+            {
+                color: #F9F871 !important;
+                border:#F9F871 solid 1px;
+                padding: .4rem 1.5rem !important;
+            }
+            .btn-login:hover,a.btn-login:focus, a.btn-login:hover
+            {
+                color: #333331 !important;
+                background-color: #F9F871 !important;
+            }
+            .nav-item .active
+            {
+                color: #F9F871 !important;
+                border-bottom: 2px solid #F9F871;
+            }
+            .nav-link:hover
+            {
+                color: #F9F871 !important;
+            }
+            .w-100
+            {
+                width: 90% !important;
+            }
+            .ima
+            {
+                padding-left: 0 !important;
+            }
+            .centered{
+                position: relative;
+                top: 50%;
+                transform: translate(10%,-50%);
+            }
+            .profil
+            {
+                min-height: 100px;
+                width: 100%;
+                background: linear-gradient(to right, #333331 73%, #f8f9fc 0%);
+            }
+            .contact
+            {
+                min-height: 100px;
+                width: 100%;
+                background: linear-gradient(to right, #f8f9fc 55%, #F9F871 50%);
+            }
+            .rg{
+                width: 100%;
+                background: linear-gradient(to right, #f8f9fc 40%, #F9F871 0%);
+            }
+        }
+        .rg{
+            width: 100%;
+            background-color: #F9F871;
+        }
+        .profile
+        {
+            min-height: 100px;
+            width: 100%;
+            background-color: #f8f9fc;
+        }
+        .profil
+        {
+            min-height: 100px;
+            width: 100%;
+            background-color: #333331;
+        }
+ 		.fs{
+			width: 100%;
+ 		}
+        .sell,.contact
+        {
+            min-height: 100px;
+            width: 100%;
+            background-color: #F9F871;
+        }
+        .team
+        {
+            min-height: 100px;
+            width: 100%;;
+            background-color: #f8f9fc;
+        }
+        .footer
+        {
+            color: white;
+            min-height: auto;
+            width: 100%;;
+            background-color: #333331;
+        }
+        .card_desc
+        {
+            background-color: #333331;
+        }
+        .owl-nav
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark" id="navbar">
+        <div class="container pl-3">
+            <a class="navbar-brand" href="{{url('/')}}">
+                <img src="{{asset('img/logo_white.png')}}" height="40" alt="">
+            </a>
+            <button class="navbar-toggler" style="border-color: transparent;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link activated active" href="#header">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link activated" href="#profile">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link activated" href="#sell">Harga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link activated" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link activated" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link btn-transparent btn-login" href="{{route('login')}}">Log In</a>
+                        </li>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Halo, {{Auth::user()->name}}
                             </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route(Role::is().'.dashboard')}}">Dashboard</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="{{ url('logout') }}" onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">Logout</a>
+                            </div>
+                        </li>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                            {{ csrf_field() }}
+                        </form>
+                    @endguest
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="fs header" id="header">
+        <div class="rg">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 ima">
+                        <img src="{{asset('img/hero.png')}}" style="margin-top: 100px; width: 100%" class="mb-5">
                     </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    <div class="col-md-5">
+                        <div class="centered py-3">
+                            <h6>Jadikan lingkungan yang bersih dan sehat</h6>
+                            <h1 class="title text-bold">Jual Sampah Dimanapun</h1>
+                            <div class="col-md-8" style="padding: 0 !important;">
+                                <a href="{{route('register')}}" class="bg-white text-black btn-block btn my-4" style="border-radius: 0 !important; text-align: left !important">Daftar Sekarang <i class="fas fa-arrow-right py-1" style="float: right !important;"></i></a>
+                                <p>Bumi bersih hidup pun sehat, ciptakan lingkungan bersih dengan mudah, menggunakan digital.</p>
+                                <a href="#profile" class="bg-white px-2 py-1 mb-3 text-secondary" style="border-radius: 100%; float: right;"><i class="fas fa-arrow-down"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </section>
+    <section id="profile" class="profile">
+        <div class="spacer"></div>
+        <div class="profil">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="spacer"></div>
+                    {{-- <h2 class="text-center px-2 text-bold">Profil</h2> --}}
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="card-title pt-4 text-bold text-warning text-uppercase">About us</h6>
+                        <h2 class="text-white font-bold">Kami menjemput, membersihkan dan selalu bersih</h2>
+                        <p class="text-white">Platform global yang mendukung penghijauan Dunia dengan cara menjaga kualitas lingkungan. Kami disini sebagai perusahaan pengangkut, pengumpul, pemanfaat, serta pengolah sampah yang menjalankan program ramah  lingkungan dengan metode modern dan bermanfaat bagi masyarakat melalui program buang sampah digital.</p>
+                        <div class="spacer"></div>
+                    </div>
+                    <div class="col-md-5 offset-md-1">
+                        <img src="{{asset('img/about.png')}}" class="abot" style="margin-top: -40px;">
+                        <div class="spacer d-block d-md-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+    </section>
+    <section id="sell" class="sell">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="spacer"></div>
+                <h2 class="text-center px-2 text-bold">Jual sampah anda dan dapatkan banyak <br>keuntungan</h2>
+                <div class="owl-carousel owl-theme nonloop pt-4">
+                    @foreach($types as $ty)
+                    <div style="padding: 10px;">
+                        <div class="card_portofolio">
+                            <img src="{{asset($ty->image)}}" alt="logo">
+                            <p class="text-white text-semibold p-3 card_desc">
+                                {{$ty->type}}
+                                <span class="text-warning" style="float:right;">Rp.{{number_format($ty->price)}}/pcs</span>
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </section>
+    <section id="team" class="team">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="spacer"></div>
+                <h2 class="text-center px-2 text-bold mb-5">Team</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="row bg-team">
+                        <div class="col-4">
+                            <img src="{{asset('img/team/bugita.png')}}" class="w-100">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="text-bold text-white">Gita Fadila Fitriana, S.Kom., M.Kom</h5>
+                            <span class="text-warning">Pembimbing</span>
+                        </div>
+                    </div>
+                    <div class="row my-5 bg-team">
+                        <div class="col-4">
+                            <img src="{{asset('img/team/beny.png')}}" class="w-100">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="text-bold text-white">Rohman Beny R</h5>
+                            <span class="text-warning">UI / UX Designer</span>
+                            <h6 class="mt-2 text-white">S1 Software Engineering</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <div class="row bg-team">
+                        <div class="col-4">
+                            <img src="{{asset('img/team/hanif.png')}}" class="w-100">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="text-bold text-white">Mochammad Hanif</h5>
+                            <span class="text-warning">Programmer</span>
+                            <h6 class="mt-2 text-white">S1 Software Engineering</h6>
+                        </div>
+                    </div>
+                    <div class="row my-5 bg-team">
+                        <div class="col-4">
+                            <img src="{{asset('img/team/rendi.png')}}" class="w-100">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="text-bold text-white">Rendi Putra Pradana</h5>
+                            <span class="text-warning">System Analysis</span>
+                            <h6 class="mt-2 text-white">S1 Software Engineering</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="spacer"></div>
+                <div class="col-md-4">
+                    <h3 class="text-bold mb-4">Hubungi Kami</h3>
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" name="name" id="name" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan nama" aria-describedby="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan email" aria-describedby="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" name="subject" id="subject" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan subject" aria-describedby="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea name="message" id="message" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan pesan" aria-describedby="message" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-grey">Kirim Pesan</button>
+                </div>
+                <div class="col-md-5 mt-5">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8113882.799116625!2d105.2794756253608!3d-6.787270333163018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655ea49d9f9885%3A0x62be0b6159700ec9!2sInstitut%20Teknologi%20Telkom%20Purwokerto!5e0!3m2!1sid!2sid!4v1625218008649!5m2!1sid!2sid" height="450" width="100%" style="border:0; box-shadow: 0px 0px 9px rgb(0 0 0 / 20%);" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="col-md-2 mt-5">
+                    <div class="mb-5">
+                        <span class="text-uppercase text-bold"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;Phones</span>
+                        <ul style="list-style-type: none; padding-inline-start: 2px !important;" class="mt-1">
+                            <li style="padding: 0;">081390919501</li>
+                            <li>085155116676</li>
+                        </ul>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-uppercase text-bold"><i class="far fa-envelope"></i>&nbsp;&nbsp;Email</span>
+                        <ul style="list-style-type: none; padding-inline-start: 2px !important;" class="mt-1">
+                            <li style="padding: 0;">pickytrash@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-uppercase text-bold"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Alamat</span>
+                        <ul style="list-style-type: none; padding-inline-start: 2px !important;" class="mt-1">
+                            <li style="padding: 0;">Telkom Purwokerto</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+    </section>
+    <section id="footer" class="footer">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-md-3">
+                    <img src="{{asset('img/logo_white.png')}}" alt="" class="w-100">
+                    <p>Kami menciptakan kemungkinan untuk dunia yang <span class="text-bold">bersih</span> dan <span class="text-bold">sehat</span></p>
+                </div>
+                <div class="col-md-2 offset-md-5">
+                    <span class="text-bold pb-2 border-bold border-bottom">Explore</span>
+                    <ul style="list-style-type: none; padding-inline-start: 2px !important;" class="mt-3">
+                        <li style="padding: 0;">
+                            <a href="#header" class="text-white">Home</a>
+                        </li>
+                        <li>
+                            <a href="#profile" class="text-white">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#sell" class="text-white">Harga</a>
+                        </li>
+                        <li>
+                            <a href="#sell" class="text-white">Team</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="text-white">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <span class="text-bold pb-2 border-bold border-bottom">Quick Links</span>
+                    <ul style="list-style-type: none; padding-inline-start: 2px !important;" class="mt-3">
+                        <li style="padding: 0;">
+                            <a href="{{route('register')}}" class="text-white">Sign up</a>
+                        </li>
+                        <li>
+                            <a href="{{route('login')}}" class="text-white">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr style="border-color: white;">
+        <div class="container">
+            <div class="d-flex justify-content-center justify-content-lg-between pt-2 pb-4">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                  <span>Copyright &copy; 2021. All right reserved.</span>
+                </div>
+                <!-- Left -->
+  
+                <!-- Right -->
+                <div>
+                    <a href="" class="px-2 text-white noline">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="" class="px-2 text-white noline">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="px-2 text-white noline">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="px-2 text-white noline">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- javascript owlcarousel -->
+    <script src="https://syntx.id/assets/vendors/jquery.min.js"></script>
+    <script src="https://syntx.id/assets/owlcarousel/owl.carousel.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:false,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+        });
+        $(document).ready(function () {
+            $(document).on("scroll", onScroll);
+            //smoothscroll
+            $(document).on('click', 'a[href^="#"]', function (event) {
+                event.preventDefault();
+                // $(document).off("scroll");
+                $('a').each(function () {
+                    $(this).removeClass('active');
+                })
+                $(this).addClass('active');
+                window.location.hash = "";
+                $('html, body').stop().animate({
+                    scrollTop: $($.attr(this, 'href')).offset().top + 1
+                }, 500, 'swing', function () {
+                    $(document).on("scroll", onScroll);
+                });
+            });
+        });
+
+        function onScroll(){
+            console.clear();
+            history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
+            var scrollPos = $(this).scrollTop();
+            $('#navbarSupportedContent .activated').each(function () {
+                var currLink = $(this);
+                var refElement = $(currLink.attr("href"));
+                if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                    $('#navbarSupportedContent ul li .activated').removeClass("active");
+                    currLink.addClass("active");
+                }
+                else{
+                    currLink.removeClass("active");
+                }
+            });
+        }
+    </script>
+</body>
 </html>
