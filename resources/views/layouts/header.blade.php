@@ -6,7 +6,7 @@
 <ul class="navbar-nav navbar-right">
 
     @if(Auth::check())
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+        {{-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifikasi</div>
                 <div class="dropdown-list-content dropdown-list-icons">
@@ -29,7 +29,7 @@
                     @endif
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                class="nav-link dropdown-toggle image nav-link-lg nav-link-user" style="padding: 0;">
