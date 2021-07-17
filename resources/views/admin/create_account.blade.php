@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{ __('Buat Akun') }}
+                <h4 class="card-title">Buat Akun</h4>
             </div>
             <div class="card-body">
                 @if (session('success'))

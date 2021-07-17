@@ -16,6 +16,9 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Daftar Akun</h4>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-inverse table-hover" id="table-1">
