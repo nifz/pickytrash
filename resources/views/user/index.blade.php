@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','Dashboard')
 @section('content')
 @php $sum = 0; @endphp
 @foreach($sell as $s)
