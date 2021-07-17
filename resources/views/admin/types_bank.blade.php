@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{ __('Jenis Bank yang tersedia') }}
+                <h4 class="card-title">Daftar Jenis Bank</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -40,7 +40,7 @@
         </div>
         <div id="banks" class="card">
             <div class="card-header">
-                {{ __('Bank') }}
+                <h4 class="card-title">Jenis Bank</h4>
             </div>
             <div class="card-body">
                 @if (session('bank'))

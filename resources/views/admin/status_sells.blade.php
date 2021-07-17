@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{ __('Status Penjualan yang tersedia') }}
+                <h4 class="card-title">Daftar Status Penjualan</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -40,7 +40,7 @@
         </div>
         <div id="status" class="card">
             <div class="card-header">
-                {{ __('Status Penjualan') }}
+                <h4 class="card-title">Status Penjualan</h4>
             </div>
             <div class="card-body">
                 @if (session('status'))

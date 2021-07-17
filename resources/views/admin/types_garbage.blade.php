@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{ __('Jenis Sampah yang tersedia') }}
+                <h4 class="card-title">Daftar Jenis Sampah</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -42,7 +42,7 @@
         </div>
         <div id="garbages" class="card">
             <div class="card-header">
-                {{ __('Jenis Sampah') }}
+                <h4 class="card-title">Jenis Sampah</h4>
             </div>
             <div class="card-body">
                 @if (session('garbage'))
