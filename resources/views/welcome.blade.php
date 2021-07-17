@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
     <title>{{ config('app.name') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_square.png') }}">
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="https://syntx.id/assets/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://syntx.id/assets/owlcarousel/assets/owl.theme.default.min.css">
@@ -34,7 +35,7 @@
         }
         .bg-team
         {
-            background-image: url('img/team/bg.png');
+            background-image: url('{{ asset('img/team/bg.png') }}');
             padding: 50px 0px 30px 0px;
 			background-repeat:no-repeat;
  			position: relative;
