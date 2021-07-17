@@ -2,11 +2,19 @@
 @section('title')
     Login
 @endsection
+@section('images')
+    <img src="{{asset('img/login.png')}}">
+@endsection
 @section('content')
-    <div class="card card-primary">
-        <div class="card-header"><h4>Login</h4></div>
-
+    <div class="card">
         <div class="card-body">
+            <a href="{{url('/')}}" class="d-block d-md-none">
+                <center>
+                    <img src="{{asset('img/logo_black.png')}}" alt="" class="mb-5">
+                </center>
+            </a>
+            <h3 class="text-bold text-grey">Log in.</h3>
+            <span>Masuk menggunakan data yang anda masukkan saat mendaftar.</span>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 @if ($errors->any())
@@ -18,7 +26,7 @@
                         </ul>
                     </div>
                 @endif
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <label for="email">Email</label>
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
@@ -58,11 +66,18 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    <button type="submit" class="btn btn-grey btn-lg btn-block text-white" tabindex="4">
                         Login
                     </button>
                 </div>
             </form>
+            <hr>
+            <div class="form-group text-center pb-5">
+                <div><small>Belum mempunyai akun?</small></div>
+                <a href="{{route('register')}}" class="btn btn-white text-black px-4" tabindex="4">
+                    Sign Up
+                </a>
+            </div>
         </div>
     </div>
 @endsection
