@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Wallet::create([
-            'id' => $create_user->id,
+            'id_users' => $create_user->id,
             'amount' => 0,
         ]);
 
