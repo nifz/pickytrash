@@ -80,3 +80,10 @@ Route::group(['middleware'=>'isAdmin'],function(){
         });
     });
 });
+
+Route::prefix('location')->group(function () {
+    Route::post('/province', [LocationController::class, 'province_store'])->name('province.store');
+    Route::post('/city', [LocationController::class, 'city_store'])->name('city.store');
+    Route::post('/district', [LocationController::class, 'district_store'])->name('district.store');
+    Route::post('/village', [LocationController::class, 'village_store'])->name('village.store');
+});
