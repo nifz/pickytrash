@@ -17,8 +17,6 @@ class CreateContactUsReply extends Migration
             $table->id();
             $table->bigInteger('id_users');
             $table->bigInteger('id_contact_us');
-            $table->string('name');
-            $table->string('email');
             $table->string('subject');
             $table->text('message');
             $table->timestamps();

@@ -465,19 +465,14 @@ class AdminController extends Controller
         return view('admin.contact_us.reply_pesan', compact('data'));
     }
     
-    public function contact_us_reply_store(Request $req, $id_contact)
+    public function contact_us_reply_store(Request $req)
     {
+        $id_contact = $req->id;
         $req->validate([
-            'name'=> 'required|max:100',
-            'email'=> 'required|email',
             'subject'=> 'required|max:100',
             'message'=> 'required',
         ],
         [
-            'name.required'=> 'Nama tidak boleh kosong.',
-            'name.max'=> 'Nama tidak boleh lebih dari 100 karakter.',
-            'email.required'=> 'Email tidak boleh kosong.',
-            'email.email'=> 'Email tidak valid.',
             'subject.required'=> 'Subject tidak boleh kosong.',
             'subject.max'=> 'Subject tidak boleh lebih dari 100 karakter..',
             'message.required'=> 'Pesan tidak kosong.',
@@ -486,8 +481,6 @@ class AdminController extends Controller
         $contact_us = new ContactUsReply;
         $contact_us->id_contact_us = $id_contact;
         $contact_us->id_users = Auth::user()->id;
-        $contact_us->name = $req->name;
-        $contact_us->email = $req->email;
         $contact_us->subject = $req->subject;
         $contact_us->message = $req->message;
 

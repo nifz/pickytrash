@@ -15,8 +15,10 @@
 <div class="row ">
     <div class="col-md-6">
         <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Detail Pesan Masuk</h4>
+            </div>
             <div class="card-body">
-                <h3 class="text-bold mb-4">Detail Pesan</h3>
                 <div class="table-responsive">
                     <table class="table table-striped table-inverse table-hover" id="table-1">
                         <thead>                                 
@@ -51,8 +53,10 @@
 
     <div class="col-md-6">
         <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Balas Pesan</h4>
+            </div>
             <div class="card-body">
-                <h3 class="text-bold mb-4">Pesan Balasan</h3>
                 <div class="table-responsive">
                     <table class="table table-striped table-inverse table-hover" id="table-1">
                         <thead>                                 
@@ -62,14 +66,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Nama</td>
-                                <td>{{$data->name}}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{{$data->email}}</td>
-                            </tr>
                             <tr>
                                 <td>Subject</td>
                                 <td>{{$data->subject}}</td>

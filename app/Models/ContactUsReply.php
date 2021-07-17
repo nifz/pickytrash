@@ -12,8 +12,6 @@ class ContactUsReply extends Model
     protected $table = "contact_us_reply";
     protected $fillable = [
         'id_contact_us',
-        'name',
-        'email',
         'subject',
         'message',
         'is_reply',

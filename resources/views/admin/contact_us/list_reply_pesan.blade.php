@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Daftar Pesan Yang Sudah Dibalas')
+@section('title','Pesan Keluar')
 @section('page_css')
     <link rel="stylesheet" href="{{ asset('assets/css/datatables/datatables.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatables/dataTables.bootstrap4.min.css')}}">
@@ -16,6 +16,9 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Pesan Keluar</h4>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-inverse table-hover" id="table-1">
