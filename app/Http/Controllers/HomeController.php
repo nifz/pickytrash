@@ -212,4 +212,19 @@ class HomeController extends Controller
             return back();
         }
     }
+    public function withdrawal()
+    {
+        $bank = DB::Table('banks')->where('id_users',Auth::user()->id)->where('status',1)->get();
+        $banks = DB::Table('banks')->where('id_users',Auth::user()->id)->get();
+        $history_payment = DB::Table('history_payments')->orderBy('created_at','DESC')->get();
+        $type_bank = DB::Table('type_banks')->where('status',1)->get();
+        $type_banks = DB::Table('type_banks')->get();
+        return view('withdrawal',[
+            'bank' => $bank,
+            'banks' => $banks,
+            'history_payment' => $history_payment,
+            'type_bank' => $type_bank,
+            'type_banks' => $type_banks,
+        ]);
+    }
 }
