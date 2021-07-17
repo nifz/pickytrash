@@ -17,6 +17,7 @@ class CreateTypesTable extends Migration
             $table->id();
             $table->string('type');
             $table->integer('price');
+            $table->longText('image');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

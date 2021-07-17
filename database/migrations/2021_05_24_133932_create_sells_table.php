@@ -17,8 +17,8 @@ class CreateSellsTable extends Migration
             $table->id();
             $table->integer('id_users');
             $table->integer('id_addresses');
-            $table->integer('id_types');
-            $table->integer('qty');
+            $table->string('id_types');
+            $table->string('qty');
             $table->timestamps();
         });
     }

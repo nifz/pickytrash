@@ -16,8 +16,8 @@ class CreateHistorySellsTable extends Migration
         Schema::create('history_sells', function (Blueprint $table) {
             $table->id();
             $table->integer('id_sells');
-            $table->integer('id_users');
-            $table->string('status');
+            $table->integer('id_users')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

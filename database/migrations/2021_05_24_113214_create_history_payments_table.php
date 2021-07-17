@@ -15,9 +15,9 @@ class CreateHistoryPaymentsTable extends Migration
     {
         Schema::create('history_payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_users');
+            $table->integer('id_banks');
             $table->integer('amount');
-            $table->string('status');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
