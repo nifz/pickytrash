@@ -28,6 +28,11 @@ class DatabaseSeeder extends Seeder
             'role' => 3,
         ]);
 
+        Wallet::create([
+            'id' => $create_user->id,
+            'amount' => 0,
+        ]);
+
         Type::create([
             'type' => 'Botol Plastik',
             'price' => 100,
