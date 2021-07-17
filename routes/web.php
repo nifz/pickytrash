@@ -24,6 +24,7 @@ Route::get('/', function () {
         'types' => $types,
     ]);
 });
+Route::post('/', [App\Http\Controllers\FrontController::class, 'contact_us_store'])->name('contact_us_store');
 
 Auth::routes(['reset'=>false]);
 
@@ -77,6 +78,13 @@ Route::group(['middleware'=>'isAdmin'],function(){
             Route::get('/{id}', [AdminController::class, 'profile_account'])->name('admin.profile_account');
             Route::post('/{id}', [AdminController::class, 'profile_account_store'])->name('admin.profile_account_store');
             Route::post('/{id}/profile_account_address', [AdminController::class, 'profile_account_address_store'])->name('admin.profile_account.address.store');
+        });
+        Route::prefix('contact_us')->group(function () {
+            Route::get('/', [AdminController::class, 'contact_us_list'])->name('admin.contact_us_list');
+            Route::get('/list_reply', [AdminController::class, 'list_reply'])->name('admin.list_reply');
+            Route::get('/reply_detail/{id}', [AdminController::class, 'reply_detail'])->name('admin.reply_detail');
+            Route::get('/reply/{id}', [AdminController::class, 'contact_us_reply'])->name('admin.contact_us_reply');
+            Route::post('/reply/{id}', [AdminController::class, 'contact_us_reply_store'])->name('admin.contact_us_reply_store');
         });
     });
 });

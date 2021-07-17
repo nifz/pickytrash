@@ -497,6 +497,8 @@
                 <div class="spacer"></div>
                 <div class="col-md-4">
                     <h3 class="text-bold mb-4">Hubungi Kami</h3>
+                    <form  method="POST" action="{{ route('contact_us_store') }}" enctype="multipart/form-data">
+                        @csrf
                     <div class="form-group">
                         <label for="name">Nama</label>
                         <input type="text" name="name" id="name" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan nama" aria-describedby="name">
@@ -514,6 +516,7 @@
                         <textarea name="message" id="message" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan pesan" aria-describedby="message" rows="3"></textarea>
                     </div>
                     <button class="btn btn-grey">Kirim Pesan</button>
+                    </form>
                 </div>
                 <div class="col-md-5 mt-5">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8113882.799116625!2d105.2794756253608!3d-6.787270333163018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655ea49d9f9885%3A0x62be0b6159700ec9!2sInstitut%20Teknologi%20Telkom%20Purwokerto!5e0!3m2!1sid!2sid!4v1625218008649!5m2!1sid!2sid" height="450" width="100%" style="border:0; box-shadow: 0px 0px 9px rgb(0 0 0 / 20%);" allowfullscreen="" loading="lazy"></iframe>

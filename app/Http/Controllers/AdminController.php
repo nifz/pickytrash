@@ -14,6 +14,8 @@ use App\Models\TypeBank;
 use App\Models\StatusSell;
 use App\Models\Wallet;
 use App\Models\HistorySell;
+use App\Models\contactUs;
+use App\Models\contactUsReply;
 use Auth;
 use Hash;
 use DB;
@@ -442,4 +444,105 @@ class AdminController extends Controller
             }
         }
     }
+
+    public function contact_us_list()
+    {
+        $data = DB::table('contact_us')
+            ->orderBy('id', 'desc')
+            ->get();
+        
+        $jml = count($data);
+        
+        return view('admin.contact_us.list_pesan', compact('data', 'jml'));
+    }
+    
+    public function contact_us_reply($id_contact)
+    {
+        $data = DB::table('contact_us')
+            ->where('id', '=', $id_contact)
+            ->first();
+
+        return view('admin.contact_us.reply_pesan', compact('data'));
+    }
+    
+    public function contact_us_reply_store(Request $req, $id_contact)
+    {
+        $req->validate([
+            'name'=> 'required|max:100',
+            'email'=> 'required|email',
+            'subject'=> 'required|max:100',
+            'message'=> 'required',
+        ],
+        [
+            'name.required'=> 'Nama tidak boleh kosong.',
+            'name.max'=> 'Nama tidak boleh lebih dari 100 karakter.',
+            'email.required'=> 'Email tidak boleh kosong.',
+            'email.email'=> 'Email tidak valid.',
+            'subject.required'=> 'Subject tidak boleh kosong.',
+            'subject.max'=> 'Subject tidak boleh lebih dari 100 karakter..',
+            'message.required'=> 'Pesan tidak kosong.',
+        ]);
+        
+        $contact_us = new ContactUsReply;
+        $contact_us->id_contact_us = $id_contact;
+        $contact_us->id_users = Auth::user()->id;
+        $contact_us->name = $req->name;
+        $contact_us->email = $req->email;
+        $contact_us->subject = $req->subject;
+        $contact_us->message = $req->message;
+
+        // update status contact_us
+        $update = DB::table('contact_us')
+            ->where([
+                ['id', '=', $id_contact],
+            ])->update([
+                'is_reply' => 1,
+            ]);
+
+        if($contact_us->save()){
+            return redirect()->route('admin.contact_us_list')->with('sukses','Berhasil mengirim balasan!');
+        }
+        return redirect()->route('admin.contact_us_list')->with('error','Gagal mengirim balasan!');
+    }
+
+    public function list_reply()
+    {
+        $data = DB::table('contact_us_reply')
+            ->join('users','contact_us_reply.id_users','=','id_users')
+            ->select(
+                'users.*',
+                'contact_us_reply.*',
+                'users.id as id_users',
+                'users.name as user_name',
+            )
+            ->orderBy('contact_us_reply.id', 'desc')
+            ->get();
+        
+        $jml = count($data);
+
+        return view('admin.contact_us.list_reply_pesan', compact('data', 'jml'));
+    }
+
+    public function reply_detail($id)
+    {
+        $data = DB::table('contact_us_reply')
+            ->join('users','contact_us_reply.id_users','=','id_users')
+            ->join('contact_us','contact_us_reply.id_contact_us','=','id_contact_us')
+            ->select(
+                'users.*',
+                'contact_us_reply.*',
+                'contact_us.id as id_contact_us',
+                'users.id as id_users',
+                'users.name as user_name',
+                'contact_us.name as name_contact_us',
+                'contact_us.email as email_contact_us',
+                'contact_us.subject as subject_contact_us',
+                'contact_us.message as message_contact_us',
+            )
+            ->where('contact_us_reply.id', '=', $id)
+            ->first();
+
+        return view('admin.contact_us.reply_detail', compact('data'));
+    }
+
 }
