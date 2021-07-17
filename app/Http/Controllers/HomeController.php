@@ -227,4 +227,28 @@ class HomeController extends Controller
             'type_banks' => $type_banks,
         ]);
     }
+    public function withdrawal_store(Request $req)
+    {
+        $wallet = DB::Table('wallets')->where('id_users',Auth::user()->id)->first();
+        if($req->amount < 10000)
+        {
+            return back()->with('fail','Minimal penarikan adalah Rp.10,000');
+        }
+        if($req->amount <= $wallet->amount)
+        {
+            $create_history = HistoryPayment::Create([
+                'id_banks' => $req->bank,
+                'amount' => $req->amount,
+            ]);
+            if($create_history)
+            {
+                $total = $wallet->amount - $req->amount;
+                DB::Table('wallets')->where('id_users',Auth::user()->id)->update([
+                    'amount' => $total,
+                ]);
+                return back()->with('success','Berhasil melakukan penarikan');
+            }
+        }
+        return back();
+    }
 }
