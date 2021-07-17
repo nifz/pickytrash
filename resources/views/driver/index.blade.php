@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','Dashboard')
 @section('content')
 @php $pickup = []; $no = 0; @endphp
 @foreach($history_sell as $hs)
