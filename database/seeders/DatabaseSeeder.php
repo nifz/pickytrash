@@ -3,6 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Wallet;
+use App\Models\Type;
+use App\Models\TypeBank;
+use App\Models\StatusSell;
+use DB;
+use Hash;
 
 class DatabaseSeeder extends Seeder
 {
