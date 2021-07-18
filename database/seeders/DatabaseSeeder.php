@@ -35,22 +35,22 @@ class DatabaseSeeder extends Seeder
 
         Type::create([
             'type' => 'Botol Plastik',
-            'price' => 100,
+            'price' =>  3000,
             'image' => 'img/sampah/botolplastik.png',
         ]);
         Type::create([
             'type' => 'Kardus',
-            'price' => 50,
+            'price' => 2000,
             'image' => 'img/sampah/kertaskarton.png',
         ]);
         Type::create([
             'type' => 'Botol Kaca',
-            'price' => 100,
+            'price' => 2500,
             'image' => 'img/sampah/botolkaca.png',
         ]);
         Type::create([
             'type' => 'Kertas Koran',
-            'price' => 50,
+            'price' => 1000,
             'image' => 'img/sampah/kertaskoran.png',
         ]);
         
