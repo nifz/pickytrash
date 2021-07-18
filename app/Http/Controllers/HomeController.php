@@ -65,7 +65,6 @@ class HomeController extends Controller
                 $req->image->move(public_path('assets/images'),$name);
                 $profile = DB::table('users')->where('id',Auth::user()->id)->update([
                     'name' => $req->name,
-                    'email' => $req->email,
                     'photo'=>$name,
                 ]);
                 if($profile)
