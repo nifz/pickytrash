@@ -23,7 +23,7 @@ a {
 }
 .navbar-bg {
     height: 67px;
-    background-color: #fff;
+    background-color: #F8F9FC;
     z-index: -1;
     box-shadow: 0 3px 5px rgb(0 0 0 / 10%);
 }
@@ -45,6 +45,7 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
 .card {
     box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
     border-radius: 0;
+    background-color: transparent;
 }
 .card-statistic-2 {
     background-color: #333331;
@@ -78,7 +79,9 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
 }
 body
 {
-    background-color: #fff;
+    
+    font-family: 'Mulish', sans-serif;
+    background-color: #F8F9FC;
 }
 .card .card-header h4 {
     font-size: 16px;
@@ -103,7 +106,7 @@ body
     border-radius: 0;
 }
 .btn-secondary {
-    border: 2px solid #333331;
+    border: 1px solid #333331;
     background-color: white;
     color: #000 !important;
     border-radius: 0;
@@ -113,7 +116,7 @@ body
     background-color: #333331 !important;
 }
 .btn-primary,.btn-warning {
-    border: 2px solid #333331;
+    border: 1px solid #333331;
     background-color: #333331;
     border-radius: 0;
     box-shadow: none;
@@ -127,7 +130,7 @@ body
 }
 
 .btn-danger {
-    border: 2px solid #fc544b;
+    border: 1px solid #fc544b;
     background-color: #fc544b;
     border-radius: 0;
     box-shadow: none;
@@ -158,13 +161,14 @@ body
 .btn-success, .btn-success.disabled {
     box-shadow: none;
     border-radius: 0;
-    border: 2px solid #47c363;
+    border: 1px solid #47c363;
 }
 .btn_qty {
     width: 40px;
     height: 40px;
 }
 .form-control, .input-group-text {
+    border: 1px solid #333331;
     border-radius: 0 !important;
 }
 .selectgroup-input:checked + .selectgroup-button {
@@ -172,4 +176,13 @@ body
 }
 .modal-content, .alert {
     border-radius: 0;
+}
+
+.section .section-header {
+    background-color: transparent;
+    box-shadow: none;
+}
+.main-wrapper-1 .section .section-header {
+    margin-top: 0;
+    margin-bottom: 10px;
 }

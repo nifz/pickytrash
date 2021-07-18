@@ -183,7 +183,7 @@
         {
             color: #fff !important;
             background-color:#333331;
-            padding: .4rem 1.5rem !important;
+            /* padding: .4rem 1.5rem !important; */
             border-radius: 0 !important;
         }
         @media (max-width: 768px) {
@@ -318,9 +318,21 @@
         {
             border: none;
         }
-        .form-control,.input-group-text
+        .form-control, .input-group-text 
         {
+            border: 1px solid #333331;
+            border-radius: 0 !important;
+        }
+        .btn-secondary {
+            border: 1px solid #333331;
+            background-color: white;
+            color: #000 !important;
             border-radius: 0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            color: #fff !important;
+            background-color: #333331 !important;
         }
     </style>
 </head>
@@ -455,7 +467,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="button" id="add" class="btn btn-success btn_qty"><i class="fas fa-plus"></i></button>
+                                <button type="button" id="add" class="btn btn-grey btn_qty"><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="form-group row">
                                 <label for="qty" class="col-md-3 col-form-label">Per</label>
@@ -577,7 +589,7 @@
                         <label for="message">Pesan</label>
                         <textarea name="message" id="message" class="form-control" style="background-color: transparent; border: black 1px solid; border-radius: 0;" placeholder="Masukkan pesan" aria-describedby="message" rows="3" required></textarea>
                     </div>
-                    <button class="btn btn-grey">Kirim Pesan</button>
+                    <button class="btn btn-grey px-3">Kirim Pesan</button>
                     </form>
                 </div>
                 <div class="col-md-5 mt-5">
@@ -711,7 +723,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="button" id="`+no+`" class="btn btn-danger btn_remove btn_qty"><i class="fas fa-minus"></i></button>
+                            <button type="button" id="`+no+`" class="btn btn-secondary btn_remove btn_qty"><i class="fas fa-minus"></i></button>
                         </div>
                         <div class="form-group row">
                             <label for="qty" class="col-md-3 col-form-label">Qty</label>

@@ -65,7 +65,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="button" id="add" class="btn btn-success btn_qty"><i class="fas fa-plus"></i></button>
+                                <button type="button" id="add" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="form-group row">
                                 <label for="qty" class="col-md-3 col-form-label">Per</label>
@@ -406,7 +406,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button type="button" id="`+no+`" class="btn btn-danger btn_remove btn_qty"><i class="fas fa-minus"></i></button>
+                        <button type="button" id="`+no+`" class="btn btn-secondary btn_remove"><i class="fas fa-minus"></i></button>
                     </div>
                     <div class="form-group row">
                         <label for="qty" class="col-md-3 col-form-label">Qty</label>
