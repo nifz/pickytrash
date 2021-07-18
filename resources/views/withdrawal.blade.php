@@ -24,7 +24,7 @@
                         @csrf
                         <div class="activities">
                             <div class="activity">
-                                <div class="activity-icon bg-primary text-white shadow-primary">
+                                <div class="activity-icon bg-primary text-black shadow-primary">
                                     <i class="fas fa-wallet"></i>
                                 </div>
                                 <div class="mb-4">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="activity">
-                                <div class="activity-icon bg-primary text-white shadow-primary">
+                                <div class="activity-icon bg-primary text-black shadow-primary">
                                     <i class="fas fa-university"></i>
                                 </div>
                                 <div class="w-100 mb-4">
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="activity">
-                                <div class="activity-icon bg-primary text-white shadow-primary">
+                                <div class="activity-icon bg-primary text-black shadow-primary">
                                     Rp
                                 </div>
                                 <div class="w-100 mb-4">

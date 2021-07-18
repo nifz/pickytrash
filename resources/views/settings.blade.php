@@ -63,12 +63,6 @@
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap" value="{{ Auth::user()->name }}" required>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-3 col-form-label">Email</label>
-                                    <div class="col-md-9">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ Auth::user()->email }}" required>
-                                    </div>
-                                </div>
                                 <div class="mt-4">
                                     <button type="submit" name="change_profile" class="btn btn-warning">Ubah</button>
                                 </div>
@@ -241,7 +235,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                         <div class="btn-group mr-2" role="group">
-                                            <button type="reset" id="reset" class="btn btn-warning">Reset</button>
+                                            <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                                         </div>
                                         <div class="btn-group mr-2" id="delete_address" style="display: none;" role="group">
                                             <button type="submit" name="delete_address" onclick="return deleted()" class="btn btn-danger">Hapus Alamat</button>
@@ -332,7 +326,7 @@
                                             <button type="submit" name="submit_bank" class="btn btn-primary">Submit</button>
                                         </div>
                                         <div class="btn-group mr-2" role="group">
-                                            <button type="reset" id="reset" class="btn btn-warning">Reset</button>
+                                            <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                                         </div>
                                         <div class="btn-group mr-2" id="delete_bank" style="display: none;" role="group">
                                             <button type="submit" name="delete_bank" onclick="return deleted_bank()" class="btn btn-danger">Hapus Rekening</button>

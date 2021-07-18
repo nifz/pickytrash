@@ -63,7 +63,7 @@
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <div class="btn-group mr-2" role="group">
-                                <button type="reset" id="reset" class="btn btn-warning">Reset</button>
+                                <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                             </div>
                             <div class="btn-group mr-2" id="delete_bank" style="display: none;" role="group">
                                 <button type="submit" name="delete_bank" onclick="return deleted()" class="btn btn-danger">Hapus Nama Bank</button>

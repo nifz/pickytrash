@@ -15,7 +15,7 @@
         @endif
 @endforeach
 <div class="section-body">
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-12 col-md-7">
             <div class="card profile-widget">
                 <div class="profile-widget-header">                                
@@ -65,7 +65,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="button" id="add" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                                <button type="button" id="add" class="btn btn-success btn_qty"><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="form-group row">
                                 <label for="qty" class="col-md-3 col-form-label">Qty</label>
@@ -304,7 +304,7 @@
                                             </div>
                                             <div class="activity-detail">
                                                 <div class="mb-2">
-                                                    <span class="text-job @if($nox == ($noxx-1)) text-primary @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
+                                                    <span class="text-job @if($nox == ($noxx-1)) text-black @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
                                                     <span class="bullet"></span>
                                                 </div>
                                                 @foreach($status_sell as $ss)
@@ -401,7 +401,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button type="button" id="`+no+`" class="btn btn-danger btn_remove"><i class="fas fa-minus"></i></button>
+                        <button type="button" id="`+no+`" class="btn btn-danger btn_remove btn_qty"><i class="fas fa-minus"></i></button>
                     </div>
                     <div class="form-group row">
                         <label for="qty" class="col-md-3 col-form-label">Qty</label>

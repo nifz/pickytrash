@@ -132,6 +132,9 @@
         {
             border: 2px solid #333331;
         }
+        .alert {
+            border-radius: 0;
+        }
     </style>
 </head>
 

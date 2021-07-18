@@ -63,7 +63,7 @@
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <div class="btn-group mr-2" role="group">
-                                <button type="reset" id="reset" class="btn btn-warning">Reset</button>
+                                <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </div>
                     </div>

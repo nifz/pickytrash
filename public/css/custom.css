@@ -1,3 +1,175 @@
 .tag {
     display: inline-block;
 }
+.main-sidebar {
+    background-color: #F9F871;
+}
+.main-sidebar .sidebar-menu li.active a {
+    color: #fff;
+    font-weight: 600;
+    background-color: #333331;
+}
+.main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
+    color: #333331;
+}
+.main-sidebar .sidebar-menu li ul.dropdown-menu li.active > a {
+    color: #fff;
+}
+a.dropdown-item:focus, a.dropdown-item:active, a.dropdown-item.active {
+    background-color: #333331;
+}
+a {
+    color: #333331;
+}
+.navbar-bg {
+    height: 67px;
+    background-color: #fff;
+    z-index: -1;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 10%);
+}
+.navbar .nav-link {
+    color: #333331;
+}
+.navbar .nav-link:hover {
+    color: #000;
+}
+
+body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
+    box-shadow: 0 4px 8px #acb5f6;
+    background-color: #333331;
+    color: #fff;
+}
+.navbar .nav-link.nav-link-user {
+    color: #333331;
+}
+.card {
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+    border-radius: 0;
+}
+.card-statistic-2 {
+    background-color: #333331;
+    color: #fff;
+}
+.card-stats-title,.text-warning {
+    color: #F9F871 !important;
+}
+.card .card-stats .card-stats-title {
+    padding: 15px 25px;
+    background-color: #333331;
+}
+.bg-secondary {
+    background-color: #F9F871 !important;
+}
+.shadow-secondary {
+    box-shadow: 0 2px 6px #F9F871;
+}
+.bg-primary {
+    background-color: #333331 !important;
+}
+.shadow-primary {
+    box-shadow: 0 2px 6px #eeeeee;
+}
+.card.card-statistic-1 .card-icon .ion, .card.card-statistic-1 .card-icon .fas, .card.card-statistic-1 .card-icon .far, .card.card-statistic-1 .card-icon .fab, .card.card-statistic-1 .card-icon .fal, .card.card-statistic-2 .card-icon .ion, .card.card-statistic-2 .card-icon .fas, .card.card-statistic-2 .card-icon .far, .card.card-statistic-2 .card-icon .fab, .card.card-statistic-2 .card-icon .fal {
+    font-size: 22px;
+    color: #333331;
+}
+.card.card-statistic-1 .card-body, .card.card-statistic-2 .card-body {
+    color: #fff;
+}
+body
+{
+    background-color: #fff;
+}
+.card .card-header h4 {
+    font-size: 16px;
+    line-height: 28px;
+    color: #333331;
+    padding-right: 10px;
+    margin-bottom: 0;
+}
+.nav-pills .nav-item .nav-link.active {
+    box-shadow: none;
+    color: #fff;
+    background-color: #333331;
+}
+.nav-pills .nav-item .nav-link {
+    color: #818181;
+}
+.nav-pills .nav-item .nav-link:hover {
+    background-color: #333331;
+    color: #fff;
+}
+.nav-pills .nav-link {
+    border-radius: 0;
+}
+.btn-secondary {
+    border: 2px solid #333331;
+    background-color: white;
+    color: #000 !important;
+    border-radius: 0;
+    box-shadow: none;
+}
+.btn-secondary:hover {
+    background-color: #333331 !important;
+}
+.btn-primary,.btn-warning {
+    border: 2px solid #333331;
+    background-color: #333331;
+    border-radius: 0;
+    box-shadow: none;
+}
+.section .section-header .section-header-back .btn:hover {
+    background-color: #333331;
+    color: #fff;
+}
+.btn-primary:active, .btn-primary:hover, .btn-warning:hover, .btn-primary.disabled:active, .btn-primary.disabled:hover, .btn-primary:focus,.btn-warning:focus, .btn-primary:focus:active, .btn-primary.disabled:focus:active {
+    background-color: #333331 !important;
+}
+
+.btn-danger {
+    border: 2px solid #fc544b;
+    background-color: #fc544b;
+    border-radius: 0;
+    box-shadow: none;
+}
+.btn-danger:active, .btn-danger:hover, .btn-danger:hover, .btn-danger.disabled:active, .btn-danger.disabled:hover, .btn-danger:focus,.btn-danger:focus, .btn-danger:focus:active, .btn-danger.disabled:focus:active {
+    background-color: #fc544b !important;
+}
+.page-item.disabled .page-link {
+    color: #333331;
+}
+.page-item.active .page-link {
+    background-color: #333331;
+    border-color: #333331;
+    border-radius: 0;
+}
+.activities .activity:before {
+    background-color: #333331;
+}
+.card.card-hero .card-header {
+    background-image: linear-gradient(to bottom, #F9F871, #ffffa4);
+}
+.card.card-hero .card-header .card-icon, .card.card-hero .card-header h4, .card.card-hero .card-header .card-description {
+    color: #333331;
+}
+.section .section-title:before {
+    background-color: #333331;
+}
+.btn-success, .btn-success.disabled {
+    box-shadow: none;
+    border-radius: 0;
+    border: 2px solid #47c363;
+}
+.btn_qty {
+    width: 40px;
+    height: 40px;
+}
+.form-control, .input-group-text {
+    border-radius: 0 !important;
+}
+.selectgroup-input:checked + .selectgroup-button {
+    background-color: #333331;
+}
+.alert {
+    border-radius: 0;
+}

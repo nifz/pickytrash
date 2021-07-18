@@ -51,9 +51,9 @@
                                     <input class="form-check-input mt-3 mb-4" onclick="isAddress()" type="checkbox" name="addressed" id="addressed" value="1"> Tambahkan Alamat
                                 </label>
                             </div>
-                            <div class="d-sm-none d-md-block">
+                            <div class="d-md-block d-none">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-warning">Reset</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </div>
                         <div id="addres" class="col-md-6 d-sm-none d-md-block">
@@ -118,9 +118,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col d-none d-sm-block d-md-none">
+                        <div class="col d-block d-md-none">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </div>
                 </form>

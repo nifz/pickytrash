@@ -63,7 +63,7 @@
     
 @endphp
 
-<div class="row">
+<div class="row mt-4">
     <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="card card-statistic-2">
             <div class="card-stats">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="card-icon shadow-primary bg-primary">
+                <div class="card-icon shadow-secondary bg-secondary">
                     <i class="fas fa-box-open"></i>
                 </div>
                 <div class="card-wrap">
@@ -105,7 +105,7 @@
             <div class="card-chart">
                 <canvas id="garbage-chart" height="80"></canvas>
             </div>
-            <div class="card-icon shadow-primary bg-primary">
+            <div class="card-icon shadow-secondary bg-secondary">
                 <i class="fas fa-recycle"></i>
             </div>
             <div class="card-wrap">
@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="card-icon shadow-primary bg-primary">
+                <div class="card-icon shadow-secondary bg-secondary">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="card-wrap">
@@ -457,7 +457,7 @@
                                                             </div>
                                                             <div class="activity-detail">
                                                                 <div class="mb-2">
-                                                                    <span class="text-job @if($nox == ($noxx-1)) text-primary @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
+                                                                    <span class="text-job @if($nox == ($noxx-1)) text-black @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
                                                                     <span class="bullet"></span>
                                                                 </div>
                                                                 @foreach($status_sell as $ss)
@@ -564,8 +564,8 @@
         }
         var garbage_chart = document.getElementById("garbage-chart").getContext('2d');
         var garbage_chart_bg_color = garbage_chart.createLinearGradient(0, 0, 0, 70);
-        garbage_chart_bg_color.addColorStop(0, 'rgba(63,82,227,.2)');
-        garbage_chart_bg_color.addColorStop(1, 'rgba(63,82,227,0)');
+        garbage_chart_bg_color.addColorStop(0, 'rgba(249,248,113,.2)');
+        garbage_chart_bg_color.addColorStop(1, 'rgba(249,248,113,0)');
 
         var myChart = new Chart(garbage_chart, {
             type: 'line',
@@ -626,12 +626,12 @@
                 ],
                 backgroundColor: garbage_chart_bg_color,
                 borderWidth: 3,
-                borderColor: 'rgba(63,82,227,1)',
+                borderColor: 'rgba(249,248,113,1)',
                 pointBorderWidth: 0,
                 pointBorderColor: 'transparent',
                 pointRadius: 3,
                 pointBackgroundColor: 'transparent',
-                pointHoverBackgroundColor: 'rgba(63,82,227,1)',
+                pointHoverBackgroundColor: 'rgba(249,248,113,1)',
                 }]
             },
             options: {

@@ -71,7 +71,7 @@
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <div class="btn-group mr-2" role="group">
-                                <button type="reset" id="reset" class="btn btn-warning">Reset</button>
+                                <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                             </div>
                             <div class="btn-group mr-2" id="delete_garbage" style="display: none;" role="group">
                                 <button type="submit" name="delete_garbage" onclick="return deleted()" class="btn btn-danger">Hapus Jenis Sampah</button>
