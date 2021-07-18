@@ -1,7 +1,6 @@
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-        <img class="navbar-brand-full app-header-logo" src="{{ asset('img/logo_black.png') }}" width="140">
-        <a href="{{ url('/') }}"></a>
+        <a href="{{ url('/') }}"><img class="navbar-brand-full app-header-logo" src="{{ asset('img/logo_black.png') }}" width="140"></a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
         <a href="{{ url('/') }}" class="small-sidebar-text">

@@ -179,82 +179,7 @@
 </div>
 
 <div class="row justify-content-center">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Penarikan Saldo</h4>
-            </div>
-            <div class="card-body">
-                @if (session('withdrawal'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('withdrawal') }}
-                    </div>
-                @endif
-                <div class="table-responsive">
-                    <table class="table table-striped table-inverse table-hover" id="table-2">
-                        <thead>                                 
-                            <tr>
-                                <th>No.</th>
-                                <th>Rekening</th>
-                                <th>Nominal</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $no = 1; 
-                            @endphp
-                            @foreach($history_payment as $hp)
-                                <tr>
-                                    <td class="pt-3">{{$no++}}</td>
-                                    <td class="pt-3">
-                                        @foreach($bank as $b)
-                                            @if($b->id == $hp->id_banks)
-                                                @foreach($type_banks as $tb)
-                                                    @if($tb->id == $b->id_type_banks)
-                                                        @foreach($user as $u)
-                                                            @if($u->id == $b->id_users)
-                                                                {{$tb->name." ".$b->number." (".$u->name.") - "}}
-                                                                @if($u->role == 1)
-                                                                User
-                                                                @else
-                                                                Driver
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td class="pt-3">
-                                        Rp.{{number_format($hp->amount)}}
-                                    </td>
-                                    <td>
-                                        @if($hp->status == 0)
-                                            <div class="badge badge-pill badge-danger">Pending</div>
-                                        @else
-                                            <div class="badge badge-pill badge-success">Berhasil</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($hp->status == 0)
-                                            <form method="POST">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{$hp->id}}">
-                                                <button class="btn btn-success btn-sm" type="submit" name="withdrawal"><i class="fas fa-check"></i></button>
-                                            </form>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Pengajuan Sampah</h4>
@@ -331,6 +256,81 @@
                                                 echo '<div class="badge badge-primary">Proses</div>';
                                             }
                                         @endphp
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Penarikan Saldo</h4>
+            </div>
+            <div class="card-body">
+                @if (session('withdrawal'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('withdrawal') }}
+                    </div>
+                @endif
+                <div class="table-responsive">
+                    <table class="table table-striped table-inverse table-hover" id="table-2">
+                        <thead>                                 
+                            <tr>
+                                <th>No.</th>
+                                <th>Rekening</th>
+                                <th>Nominal</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $no = 1; 
+                            @endphp
+                            @foreach($history_payment as $hp)
+                                <tr>
+                                    <td class="pt-3">{{$no++}}</td>
+                                    <td class="pt-3">
+                                        @foreach($bank as $b)
+                                            @if($b->id == $hp->id_banks)
+                                                @foreach($type_banks as $tb)
+                                                    @if($tb->id == $b->id_type_banks)
+                                                        @foreach($user as $u)
+                                                            @if($u->id == $b->id_users)
+                                                                {{$tb->name." ".$b->number." (".$u->name.") - "}}
+                                                                @if($u->role == 1)
+                                                                User
+                                                                @else
+                                                                Driver
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td class="pt-3">
+                                        Rp.{{number_format($hp->amount)}}
+                                    </td>
+                                    <td>
+                                        @if($hp->status == 0)
+                                            <div class="badge badge-pill badge-danger">Pending</div>
+                                        @else
+                                            <div class="badge badge-pill badge-success">Berhasil</div>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($hp->status == 0)
+                                            <form method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$hp->id}}">
+                                                <button class="btn btn-success btn-sm" type="submit" name="withdrawal"><i class="fas fa-check"></i></button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -77,27 +77,31 @@
                 </div>
                 <div class="card-body">             
                     <ul class="list-unstyled list-unstyled-border">
-                        @foreach($history_payment as $hp)
-                            @foreach($bank as $b)
-                                @if($b->id == $hp->id_banks)
-                                    <li class="media">
-                                        <a href="#" class="media-body" style="text-decoration: none;">
-                                            @if($hp->status == 0)
-                                                <div class="badge badge-pill badge-danger mb-1 float-right">Pending</div>
-                                            @else
-                                                <div class="badge badge-pill badge-success mb-1 float-right">Berhasil</div>
-                                            @endif
-                                            @foreach($type_banks as $tb)
-                                                @if($tb->id == $b->id_type_banks)
-                                                    <div class="media-title">{{$tb->name}} {{$b->number}} <span class="text-success">(+Rp.{{number_format($hp->amount)}})</span></div>
+                        @if(count($history_payment)>0)
+                            @foreach($history_payment as $hp)
+                                @foreach($bank as $b)
+                                    @if($b->id == $hp->id_banks)
+                                        <li class="media">
+                                            <div class="media-body">
+                                                @if($hp->status == 0)
+                                                    <div class="badge badge-pill badge-danger mb-1 float-right">Pending</div>
+                                                @else
+                                                    <div class="badge badge-pill badge-success mb-1 float-right">Berhasil</div>
                                                 @endif
-                                            @endforeach
-                                            <div class="text-primary">{{\Carbon\Carbon::parse($hp->created_at)->diffForHumans()}}</div>
-                                        </a>
-                                    </li>
-                                @endif
+                                                @foreach($type_banks as $tb)
+                                                    @if($tb->id == $b->id_type_banks)
+                                                        <div class="media-title">{{$tb->name}} {{$b->number}} <span class="text-success">(+Rp.{{number_format($hp->amount)}})</span></div>
+                                                    @endif
+                                                @endforeach
+                                                <div class="text-primary">{{\Carbon\Carbon::parse($hp->created_at)->diffForHumans()}}</div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
                             @endforeach
-                        @endforeach
+                        @else
+                            Tidak ada
+                        @endif
                     </ul>
                 </div>
             </div>

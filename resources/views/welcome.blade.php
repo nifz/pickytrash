@@ -88,7 +88,7 @@
 
         .btn
         {
-            border-radius: 10px;
+            border-radius: 0;
         }
         .btn-white
         {
@@ -314,6 +314,14 @@
         {
             display: none;
         }
+        .br-none
+        {
+            border: none;
+        }
+        .form-control,.input-group-text
+        {
+            border-radius: 0;
+        }
     </style>
 </head>
 <body>
@@ -334,13 +342,13 @@
                         <a class="nav-link activated" href="#profile">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link activated" href="#sell">Harga</a>
+                        <a class="nav-link activated" href="#sell">Price</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link activated" href="#team">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link activated" href="#contact">Kontak</a>
+                        <a class="nav-link activated" href="#contact">Contact</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -425,11 +433,65 @@
                             <img src="{{asset($ty->image)}}" alt="logo">
                             <p class="text-white text-semibold p-3 card_desc">
                                 {{$ty->type}}
-                                <span class="text-warning" style="float:right;">Rp.{{number_format($ty->price)}}/pcs</span>
+                                <span class="text-warning" style="float:right;">Rp.{{number_format($ty->price)}}/kg</span>
                             </p>
                         </div>
                     </div>
                     @endforeach
+                </div>
+                <div class="card bg-transparent br-none">
+                    <h2 class="text-center px-2 pt-5 text-bold">Kalkulator</h2>
+                    <div class="card-body">
+                        <div class="input-wrapper">
+                            <div class="form-group row">
+                                <label for="garbage" class="col-md-3 col-form-label">Jenis Sampah</label>
+                                <div class="col-10 col-md-8">
+                                    <select name="garbage[]" id="0" class="form-control garbage">
+                                        <option value="" selected disabled>== Jenis Sampah ==</option>
+                                        @foreach($types as $type)
+                                            @if($type->status == 1)
+                                                <option value="{{$type->id}}">{{$type->type}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="button" id="add" class="btn btn-success btn_qty"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <div class="form-group row">
+                                <label for="qty" class="col-md-3 col-form-label">Per</label>
+                                <div class="col-4 col-md-3">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <input type="number" class="form-control qty" name="qty[]" id="0" min="1" step="0.1" value="1" placeholder="0.0" required disabled>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">kg</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8 col-md-6">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Rp</div>
+                                        </div>
+                                        <input type="hidden" class="realprice" id="realprice0" name="realprice">
+                                        <input type="text" class="form-control price" id="price0" name="price" value="0" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="qty" class="col-md-3 col-form-label">Total</label>
+                            <div class="col-12 col-md-9">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input type="hidden" class="realtotal">
+                                    <input type="text" class="form-control total" id="total" value="0" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="spacer"></div>
             </div>
@@ -620,7 +682,85 @@
     <!-- javascript owlcarousel -->
     <script src="https://syntx.id/assets/vendors/jquery.min.js"></script>
     <script src="https://syntx.id/assets/owlcarousel/owl.carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        function getprice() {
+            let gprice = document.getElementsByName("price");
+            let totalprice = 0;
+            for(var i = 0; i < gprice.length; i++){
+                totalprice += parseInt(gprice[i].value);
+            }
+            $('#total').val(totalprice);
+        }
+        $(document).ready(function(){
+            var no = 1;
+            var total = 0;
+            $('#add').click(function(){
+                no++;
+                $('.input-wrapper').append(`
+                    <div id="temp`+no+`">
+                        <div class="form-group row">
+                            <label for="garbage" class="col-md-3 col-form-label">Jenis Sampah</label>
+                            <div class="col-10 col-md-8">
+                                <select name="garbage[]" id="`+no+`" class="form-control garbage">
+                                    <option value="" selected disabled>== Jenis Sampah ==</option>
+                                    @foreach($types as $type)
+                                        @if($type->status == 1)
+                                            <option value="{{$type->id}}">{{$type->type}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="button" id="`+no+`" class="btn btn-danger btn_remove btn_qty"><i class="fas fa-minus"></i></button>
+                        </div>
+                        <div class="form-group row">
+                            <label for="qty" class="col-md-3 col-form-label">Qty</label>
+                            <div class="col-4 col-md-3">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <input type="number" class="form-control qty" name="qty[]" id="`+no+`" step="0.1" value="1" min="1" placeholder="0.0" required disabled>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">kg</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 col-md-6">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input type="hidden" class="realprice" id="realprice`+no+`" name="realprice">
+                                    <input type="text" class="form-control price" name="price" id="price`+no+`" value="0" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+
+            $(document).on('click', '.btn_remove', function(){
+                var button_id = $(this).attr("id"); 
+                $('#temp'+button_id).remove();
+            });
+            $(document).on('change', '.garbage', function(){
+                var button_id = $(this).attr("id"); 
+                axios.post('{{ route('types.store') }}', {id: $(this).val()}).then(function (response) {
+                    $('#price'+button_id).val(Math.round(response.data.price));
+                    $('#realprice'+button_id).val(response.data.price);
+                    $('[name="qty[]"]').prop("disabled", false)
+                    getprice();
+                });
+            });
+            $(document).on('change', '.qty', function(){
+                var button_id = $(this).attr("id"); 
+                var price = $('#realprice'+button_id).val();
+                var qty = $(this).val();
+                var count = price * qty;
+                $('#price'+button_id).val(Math.round(count));          
+            });
+            $(document).on('click', function(){
+                getprice();
+            });
+        });
         $('.owl-carousel').owlCarousel({
             loop:false,
             margin:10,

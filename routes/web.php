@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DriverController;
@@ -25,13 +26,15 @@ Route::get('/', function () {
         'types' => $types,
     ]);
 });
-Route::post('/', [App\Http\Controllers\FrontController::class, 'contact_us_store'])->name('contact_us_store');
+Route::post('/', [FrontController::class, 'contact_us_store'])->name('contact_us_store');
+
+Route::post('/calc', [FrontController::class, 'types_store'])->name('types.store');
 
 Auth::routes(['reset'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

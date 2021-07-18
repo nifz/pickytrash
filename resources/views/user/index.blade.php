@@ -383,7 +383,7 @@
         let gprice = document.getElementsByName("price");
         let totalprice = 0;
         for(var i = 0; i < gprice.length; i++){
-            totalprice += parseInt(gprice[i].value);
+            totalprice += Math.round(gprice[i].value);
         }
         $('#total').val(totalprice);
     }
@@ -439,7 +439,7 @@
         $(document).on('change', '.garbage', function(){
             var button_id = $(this).attr("id"); 
             axios.post('{{ route('user.types.store') }}', {id: $(this).val()}).then(function (response) {
-                $('#price'+button_id).val(response.data.price);
+                $('#price'+button_id).val(Math.round(response.data.price));
                 $('#realprice'+button_id).val(response.data.price);
                 $('[name="qty[]"]').prop("disabled", false)
                 getprice();
@@ -450,7 +450,7 @@
             var price = $('#realprice'+button_id).val();
             var qty = $(this).val();
             var count = price * qty;
-            $('#price'+button_id).val(count);            
+            $('#price'+button_id).val(Math.round(count));            
         });
         $(document).on('click', function(){
             getprice();

@@ -40,4 +40,9 @@ class FrontController extends Controller
         return back()->with('error','Gagal mengirim pesan!');
         
     }
+    public function types_store(Request $req)
+    {
+        $types = DB::Table('types')->where('id',$req->get('id'))->first();
+        return response()->json($types);
+    }
 }
