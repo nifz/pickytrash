@@ -170,6 +170,6 @@ body
 .selectgroup-input:checked + .selectgroup-button {
     background-color: #333331;
 }
-.alert {
+.modal-content, .alert {
     border-radius: 0;
 }

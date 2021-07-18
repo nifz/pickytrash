@@ -24,7 +24,7 @@
                     </span>
                     <div class="profile-widget-items">
                         <div class="profile-widget-item">
-                            <div class="profile-widget-item-value">{{number_format($sum)}}</div>
+                            <div class="profile-widget-item-value">{{$sum}}kg</div>
                             <div class="profile-widget-item-label">Sampah</div>
                         </div>
                         <div class="profile-widget-item">
@@ -68,9 +68,14 @@
                                 <button type="button" id="add" class="btn btn-success btn_qty"><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="form-group row">
-                                <label for="qty" class="col-md-3 col-form-label">Qty</label>
+                                <label for="qty" class="col-md-3 col-form-label">Per</label>
                                 <div class="col-4 col-md-3">
-                                    <input type="number" class="form-control qty" name="qty[]" id="0" placeholder="Qty" min="1" value="1" required disabled>
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <input type="number" class="form-control qty" name="qty[]" id="0" min="1" step="0.1" value="1" placeholder="0.0" required disabled>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">kg</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-8 col-md-6">
                                     <div class="input-group mb-2 mr-sm-2">
@@ -128,7 +133,7 @@
                     <div class="card-icon">
                         <i class="fas fa-recycle"></i>
                     </div>
-                    <h4>{{number_format($sum)}}</h4>
+                    <h4>{{$sum}}kg</h4>
                     <div class="card-description">Sampah</div>
                 </div>
                 <div class="card-body p-0">
@@ -227,7 +232,7 @@
                                                 if($ty->id == $garbage[$i])
                                                 {
                                                     $price = $ty->price*$qty[$i];
-                                                    echo number_format($qty[$i]). " Sampah " . $ty->type." Rp.".number_format($price)."<br> ";
+                                                    echo $qty[$i]. "kg Sampah " . $ty->type." Rp.".number_format($price)."<br> ";
                                                 }
                                             }
                                             array_push($count, $price);
@@ -406,7 +411,12 @@
                     <div class="form-group row">
                         <label for="qty" class="col-md-3 col-form-label">Qty</label>
                         <div class="col-4 col-md-3">
-                            <input type="number" class="form-control qty" name="qty[]" id="`+no+`" placeholder="Qty" min="1" value="1" required disabled>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input type="number" class="form-control qty" name="qty[]" id="`+no+`" step="0.1" value="1" min="1" placeholder="0.0" required disabled>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">kg</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-8 col-md-6">
                             <div class="input-group mb-2 mr-sm-2">

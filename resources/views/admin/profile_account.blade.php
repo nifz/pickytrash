@@ -397,7 +397,7 @@
                                                             </div>
                                                             <div class="activity-detail">
                                                                 <div class="mb-2">
-                                                                    <span class="text-job @if($nox == ($noxx-1)) text-primary @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
+                                                                    <span class="text-job @if($nox == ($noxx-1)) text-black @endif">{{\Carbon\Carbon::parse($hs->created_at)->diffForHumans()}}</span>
                                                                     <span class="bullet"></span>
                                                                 </div>
                                                                 @foreach($status_sell as $ss)

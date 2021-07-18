@@ -209,7 +209,7 @@
                                                                 {
                                                                     $price = $ty->price*$qty[$i];
                                                                     // echo $qty[$i]. " Sampah " . $ty->type." Rp.".number_format($price)."<br> ";
-                                                                    echo number_format($qty[$i]). " Sampah " . $ty->type."<br> ";
+                                                                    echo $qty[$i]. "kg Sampah " . $ty->type."<br> ";
                                                                 }
                                                             }
                                                             array_push($count, $price);

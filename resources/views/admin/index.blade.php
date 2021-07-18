@@ -110,10 +110,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Sampah</h4>
+                    <h4>Total Sampah</h4>
                 </div>
                 <div class="card-body">
-                    {{number_format($sum)}}
+                    {{$sum}}kg
                     <br>
                     @php
                         $output = array();
@@ -388,7 +388,7 @@
                                                                 {
                                                                     $price = $ty->price*$qty[$i];
                                                                     // echo $qty[$i]. " Sampah " . $ty->type." Rp.".number_format($price)."<br> ";
-                                                                    echo number_format($qty[$i]). " Sampah " . $ty->type."<br> ";
+                                                                    echo $qty[$i]. "kg Sampah " . $ty->type."<br> ";
                                                                 }
                                                             }
                                                             array_push($count, $price);
