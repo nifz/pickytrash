@@ -480,6 +480,8 @@ class AdminController extends Controller
         
         $contact_us = new ContactUsReply;
         $contact_us->id_contact_us = $id_contact;
+        $contact_us->name = $req->name;
+        $contact_us->email = $req->email;
         $contact_us->id_users = Auth::user()->id;
         $contact_us->subject = $req->subject;
         $contact_us->message = $req->message;
@@ -501,11 +503,11 @@ class AdminController extends Controller
     public function list_reply()
     {
         $data = DB::table('contact_us_reply')
-            ->join('users','contact_us_reply.id_users','=','id_users')
+            ->join('users','contact_us_reply.id_users','=','users.id')
             ->select(
                 'users.*',
                 'contact_us_reply.*',
-                'users.id as id_users',
+                'id_users as users.id',
                 'users.name as user_name',
             )
             ->orderBy('contact_us_reply.id', 'desc')
