@@ -637,13 +637,13 @@
                             <a href="#profile" class="text-white">About Us</a>
                         </li>
                         <li>
-                            <a href="#sell" class="text-white">Harga</a>
+                            <a href="#sell" class="text-white">Price</a>
                         </li>
                         <li>
                             <a href="#sell" class="text-white">Team</a>
                         </li>
                         <li>
-                            <a href="#contact" class="text-white">Kontak</a>
+                            <a href="#contact" class="text-white">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -654,7 +654,7 @@
                             <a href="{{route('register')}}" class="text-white">Sign up</a>
                         </li>
                         <li>
-                            <a href="{{route('login')}}" class="text-white">Login</a>
+                            <a href="{{route('login')}}" class="text-white">Log In</a>
                         </li>
                     </ul>
                 </div>
