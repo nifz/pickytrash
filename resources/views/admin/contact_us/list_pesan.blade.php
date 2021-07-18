@@ -20,6 +20,11 @@
                 <h4 class="card-title">Pesan Masuk</h4>
             </div>
             <div class="card-body">
+                @if (session('sukses'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('sukses') }}
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table table-striped table-inverse table-hover" id="table-1">
                         <thead>                                 
