@@ -19,6 +19,7 @@ use App\Models\ContactUsReply;
 use Auth;
 use Hash;
 use DB;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -313,12 +314,17 @@ class AdminController extends Controller
     }
     public function garbage_store(Request $req)
     {
-        
         if(isset($_POST['submit']))
         {
+            $validator = Validator::make($req->all(), [
+                'image.*' => 'mimes:jpg,jpeg,png,webp'
+            ]); 
             if($req->id == NULL)
             {
+                $name = 'img/sampah/'.strip_tags(str_replace(' ', '-', $req->type)).'_'.rand().'.'.$req->image->extension();
+                $req->image->move(public_path('img/sampah'),$name);
                 $create_type = Type::create([
+                    'image' => $name,
                     'type' => $req->type,
                     'price' => $req->price,
                 ]);
@@ -329,15 +335,74 @@ class AdminController extends Controller
             }
             else
             {
-                $update_type = DB::Table('types')->where([
-                    'id' => $req->id, 
-                    ])->update([
-                        'type' => $req->type,
-                        'price' => $req->price,
-                    ]);
-                if($update_type)
+                $id = $req->id;
+                $data = DB::Table('types')->where('id',$id)->first();
+                if($req->hasfile('image'))
                 {
-                    return back()->with('garbage', 'Berhasil merubah jenis sampah');
+                    $name = 'img/sampah/'.strip_tags(str_replace(' ', '-', $req->type)).'_'.rand().'.'.$req->image->extension();
+                    $req->image->move(public_path('img/sampah'),$name);
+                    
+                    if($data->price != $req->price || $data->type != $req->type)
+                    {
+                        DB::Table('types')->where('id',$id)->update([
+                            'status' => false,
+                        ]);
+                        
+                        $create_type = Type::create([
+                            'image' => $name,
+                            'type' => $req->type,
+                            'price' => $req->price,
+                        ]);
+                        if($create_type)
+                        {
+                            return back()->with('garbage', 'Berhasil merubah jenis sampah');
+                        }
+                    }
+                    else
+                    {
+                        $update_type = DB::Table('types')->where([
+                            'id' => $req->id, 
+                            ])->update([
+                                'image' => $name,
+                                'type' => $req->type,
+                                'price' => $req->price,
+                            ]);
+                        if($update_type)
+                        {
+                            return back()->with('garbage', 'Berhasil merubah jenis sampah');
+                        }
+                    }
+                }
+                else
+                {
+                    if($data->price != $req->price || $data->type != $req->type)
+                    {
+                        DB::Table('types')->where('id',$id)->update([
+                            'status' => false,
+                        ]);
+                        $create_type = Type::create([
+                            'image' => $data->image,
+                            'type' => $req->type,
+                            'price' => $req->price,
+                        ]);
+                        if($create_type)
+                        {
+                            return back()->with('garbage', 'Berhasil merubah jenis sampah');
+                        }
+                    }
+                    else
+                    {
+                        $update_type = DB::Table('types')->where([
+                            'id' => $req->id, 
+                            ])->update([
+                                'type' => $req->type,
+                                'price' => $req->price,
+                            ]);
+                        if($update_type)
+                        {
+                            return back()->with('garbage', 'Berhasil merubah jenis sampah');
+                        }
+                    }
                 }
             }
         }
