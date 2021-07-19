@@ -302,7 +302,7 @@
                                 <input type="hidden" id="id_bank" name="id" value="">
                                 <div class="form-group row">
                                     <label for="type_bank" class="col-md-3 col-form-label">Jenis Rekening</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9" style="overflow-x: auto">
                                         <div class="selectgroup w-100">
                                             @foreach($type_bank as $tb)
                                                 <label class="selectgroup-item">

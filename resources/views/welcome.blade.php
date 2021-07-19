@@ -329,16 +329,28 @@
             background-color: #fefeff;
             border-color: #333331;
         }
-        .btn-secondary {
+        .btn-secondary 
+        {
             border: 1px solid #333331;
             background-color: white;
             color: #000 !important;
             border-radius: 0;
             box-shadow: none;
         }
-        .btn-secondary:hover {
+        .btn-secondary:hover 
+        {
             color: #fff !important;
             background-color: #333331 !important;
+        }
+        .dropdown-menu 
+        {
+            border-radius: 0;
+        }
+        .dropdown-item.active, .dropdown-item:active 
+        {
+            color: #fff;
+            text-decoration: none;
+            background-color: #333331;
         }
     </style>
 </head>
@@ -732,7 +744,7 @@
                             <button type="button" id="`+no+`" class="btn btn-secondary btn_remove btn_qty"><i class="fas fa-minus"></i></button>
                         </div>
                         <div class="form-group row">
-                            <label for="qty" class="col-md-3 col-form-label">Qty</label>
+                            <label for="qty" class="col-md-3 col-form-label">Per</label>
                             <div class="col-4 col-md-3">
                                 <div class="input-group mb-2 mr-sm-2">
                                     <input type="number" class="form-control qty" name="qty[]" id="`+no+`" step="0.1" value="1" min="1" placeholder="0.0" required disabled>
