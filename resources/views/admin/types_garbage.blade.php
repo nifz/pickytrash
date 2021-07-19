@@ -50,9 +50,21 @@
                         {{ session('garbage') }}!
                     </div>
                 @endif
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" id="id" name="id" value="">
+                    <div class="form-group row">
+                        <div class="col-md-3 form-group">
+                            <label>Thumbnail:</label>
+                            <br>
+                            <label class="image__file-upload btn btn-secondary text-white" tabindex="2"> Pilih
+                                <input type="file" name="image" id="pfImage" class="d-none" accept="image/*" >
+                            </label>
+                        </div>
+                        <div class="col-4 image" style="padding: 0 257px 297px 20px;">
+                            <img id="edit_preview_photo" src="" class="img-thumbnail" style="width: 257px; height: 297px; position: absolute;"/>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="type" class="col-md-3 col-form-label">Jenis Sampah</label>
                         <div class="col-md-9">
@@ -107,6 +119,7 @@
             $('#id').val('');
             $('#type').empty();
             $('#price').empty();
+            $('edit_preview_photo').attr('src','');
             $('#delete_garbage').css('display','none');
         });
         @foreach($types as $type)
@@ -118,6 +131,7 @@
                 $('#id').val("{{$type->id}}");
                 $('#price').val("{{$type->price}}");
                 $('#type').val("{{$type->type}}");
+                $('#edit_preview_photo').attr('src','{{asset("$type->image")}}');
             });
         @endforeach
     });

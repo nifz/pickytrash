@@ -112,8 +112,13 @@
         }
         .form-control
         {
-            border: 2px solid #333331;
+            border: 1px solid #333331;
             border-radius: 0 !important;
+        }
+        .form-control:focus, .input-group-text:focus, .custom-select:focus, .custom-file-label:focus 
+        {
+            background-color: #fefeff;
+            border-color: #333331;
         }
         .btn
         {
@@ -125,12 +130,12 @@
         }
         .btn-white
         {
-            border: 2px solid #333331;
+            border: 1px solid #333331;
             background-color: white;
         }
         .btn-white:focus
         {
-            border: 2px solid #333331;
+            border: 1px solid #333331;
         }
         .alert {
             border-radius: 0;

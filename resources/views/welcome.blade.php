@@ -322,6 +322,12 @@
         {
             border: 1px solid #333331;
             border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        .form-control:focus, .input-group-text:focus, .custom-select:focus, .custom-file-label:focus 
+        {
+            background-color: #fefeff;
+            border-color: #333331;
         }
         .btn-secondary {
             border: 1px solid #333331;

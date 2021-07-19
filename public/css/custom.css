@@ -34,8 +34,8 @@ a {
     color: #000;
 }
 
-body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
-    box-shadow: 0 4px 8px #acb5f6;
+body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a,body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus, body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a, body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a:hover {
+    box-shadow: none;
     background-color: #333331;
     color: #fff;
 }
@@ -171,6 +171,10 @@ body
     border: 1px solid #333331;
     border-radius: 0 !important;
 }
+.form-control:focus, .input-group-text:focus, .custom-select:focus, .custom-file-label:focus {
+    background-color: #fefeff;
+    border-color: #333331;
+}
 .selectgroup-input:checked + .selectgroup-button {
     background-color: #333331;
 }
@@ -185,4 +189,11 @@ body
 .main-wrapper-1 .section .section-header {
     margin-top: 0;
     margin-bottom: 10px;
+}
+body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus, body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a, body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a:hover {
+    background-color: #333331 !important;
+    box-shadow: none !important;
+}
+.main-sidebar .sidebar-menu li.active > ul.dropdown-menu li a:hover {
+    color: #333331;
 }
