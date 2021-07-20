@@ -316,7 +316,7 @@
                                 <div class="form-group row">
                                     <label for="number_bank" class="col-md-3 col-form-label">Nomor Rekening</label>
                                     <div class="col-md-9">
-                                    <input type="text" name="number_bank" id="number_bank" class="form-control" placeholder="Nomor Rekening" aria-describedby="number_bank" required>
+                                    <input type="number" name="number_bank" id="number_bank" class="form-control" placeholder="Nomor Rekening" aria-describedby="number_bank" required>
                                     <small id="number_bank" class="text-muted">Nama Pemilik Rekening harus sesuai dengan Pemilik Akun.</small>
                                     </div>
                                 </div>

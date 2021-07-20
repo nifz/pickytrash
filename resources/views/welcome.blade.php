@@ -352,6 +352,11 @@
             text-decoration: none;
             background-color: #333331;
         }
+        .submitted 
+        {
+            opacity: .5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -491,7 +496,7 @@
                                 <label for="qty" class="col-md-3 col-form-label">Per</label>
                                 <div class="col-4 col-md-3">
                                     <div class="input-group mb-2 mr-sm-2">
-                                        <input type="number" class="form-control qty" name="qty[]" id="0" min="1" step="0.1" value="1" placeholder="0.0" required disabled>
+                                        <input type="number" class="form-control qty" name="qty[0]" id="0" min="1" step="0.1" value="1" placeholder="0.0" required disabled>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">kg</div>
                                         </div>
@@ -714,6 +719,18 @@
     <script src="https://syntx.id/assets/owlcarousel/owl.carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        @if(session('sukses'))
+            alert('Pesan anda berhasil dikirim.');
+        @endif
+        $('form').submit(function (event) {
+            if ($(this).hasClass('submitted')) {
+                event.preventDefault();
+            }
+            else {
+                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+                $(this).addClass('submitted');
+            }
+        });
         function getprice() {
             let gprice = document.getElementsByName("price");
             let totalprice = 0;
@@ -723,51 +740,55 @@
             $('#total').val(totalprice);
         }
         $(document).ready(function(){
-            var no = 1;
-            var total = 0;
+            var no = 0;
+            var total = {{ count($types) }};
             $('#add').click(function(){
-                no++;
-                $('.input-wrapper').append(`
-                    <div id="temp`+no+`">
-                        <div class="form-group row">
-                            <label for="garbage" class="col-md-3 col-form-label">Jenis Sampah</label>
-                            <div class="col-10 col-md-8">
-                                <select name="garbage[]" id="`+no+`" class="form-control garbage">
-                                    <option value="" selected disabled>== Jenis Sampah ==</option>
-                                    @foreach($types as $type)
-                                        @if($type->status == 1)
-                                            <option value="{{$type->id}}">{{$type->type}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                if(no+1 < total)
+                {
+                    no++;
+                    $('.input-wrapper').append(`
+                        <div id="temp`+no+`">
+                            <div class="form-group row">
+                                <label for="garbage" class="col-md-3 col-form-label">Jenis Sampah</label>
+                                <div class="col-10 col-md-8">
+                                    <select name="garbage[]" id="`+no+`" class="form-control garbage">
+                                        <option value="" selected disabled>== Jenis Sampah ==</option>
+                                        @foreach($types as $type)
+                                            @if($type->status == 1)
+                                                <option value="{{$type->id}}">{{$type->type}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="button" id="`+no+`" class="btn btn-secondary btn_remove btn_qty"><i class="fas fa-minus"></i></button>
                             </div>
-                            <button type="button" id="`+no+`" class="btn btn-secondary btn_remove btn_qty"><i class="fas fa-minus"></i></button>
-                        </div>
-                        <div class="form-group row">
-                            <label for="qty" class="col-md-3 col-form-label">Per</label>
-                            <div class="col-4 col-md-3">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <input type="number" class="form-control qty" name="qty[]" id="`+no+`" step="0.1" value="1" min="1" placeholder="0.0" required disabled>
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">kg</div>
+                            <div class="form-group row">
+                                <label for="qty" class="col-md-3 col-form-label">Per</label>
+                                <div class="col-4 col-md-3">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <input type="number" class="form-control qty" name="qty[`+no+`]" id="`+no+`" step="0.1" value="1" min="1" placeholder="0.0" required disabled>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">kg</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8 col-md-6">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Rp</div>
+                                        </div>
+                                        <input type="hidden" class="realprice" id="realprice`+no+`" name="realprice">
+                                        <input type="text" class="form-control price" name="price" id="price`+no+`" value="0" readonly>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">Rp</div>
-                                    </div>
-                                    <input type="hidden" class="realprice" id="realprice`+no+`" name="realprice">
-                                    <input type="text" class="form-control price" name="price" id="price`+no+`" value="0" readonly>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                `);
+                    `);
+                }
             });
 
             $(document).on('click', '.btn_remove', function(){
+                no--;
                 var button_id = $(this).attr("id"); 
                 $('#temp'+button_id).remove();
             });
@@ -776,7 +797,8 @@
                 axios.post('{{ route('types.store') }}', {id: $(this).val()}).then(function (response) {
                     $('#price'+button_id).val(Math.round(response.data.price));
                     $('#realprice'+button_id).val(response.data.price);
-                    $('[name="qty[]"]').prop("disabled", false)
+                    $('[name="qty['+button_id+']"]').prop("disabled", false);
+                    $('[name="qty['+button_id+']"]').val(1);
                     getprice();
                 });
             });

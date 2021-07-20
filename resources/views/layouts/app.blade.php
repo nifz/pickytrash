@@ -84,6 +84,17 @@
 <script src="{{ asset('web/js/scripts.js') }}"></script>
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+<script>
+    $('form').submit(function (event) {
+        if ($(this).hasClass('submitted')) {
+            event.preventDefault();
+        }
+        else {
+            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+            $(this).addClass('submitted');
+        }
+    });
+</script>
 @yield('scripts')
 </body>
 

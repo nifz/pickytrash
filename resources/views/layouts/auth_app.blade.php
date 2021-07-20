@@ -8,10 +8,9 @@
 
     <!-- General CSS Files -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
@@ -140,6 +139,10 @@
         .alert {
             border-radius: 0;
         }
+        .submitted {
+            opacity: .5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 
@@ -197,6 +200,17 @@
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
 <script src="{{ asset('web/js/scripts.js') }}"></script>
+<script>
+    $('form').submit(function (event) {
+        if ($(this).hasClass('submitted')) {
+            event.preventDefault();
+        }
+        else {
+            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+            $(this).addClass('submitted');
+        }
+    });
+</script>
 <!-- Page Specific JS File -->
 </body>
 </html>
