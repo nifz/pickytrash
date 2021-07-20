@@ -74,7 +74,6 @@ class HomeController extends Controller
             }
             $profile = DB::Table('users')->where('id',Auth::user()->id)->update([
                 'name' => $req->name,
-                'email' => $req->email,
             ]);
             if($profile)
             {
