@@ -112,8 +112,7 @@
         }
         .card_portofolio{
             width: 100%;
-            height: 350px; 
-            background-color: white; 
+            background-color: #333331; 
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.07);
             margin-bottom: 20px;
             transition: 1s;
@@ -309,6 +308,7 @@
         .card_desc
         {
             background-color: #333331;
+            font-size: .8em;
         }
         .owl-nav
         {
@@ -447,8 +447,8 @@
                         <p class="text-white">Platform global yang mendukung penghijauan Dunia dengan cara menjaga kualitas lingkungan. Kami disini sebagai perusahaan pengangkut, pengumpul, pemanfaat, serta pengolah sampah yang menjalankan program ramah  lingkungan dengan metode modern dan bermanfaat bagi masyarakat melalui program buang sampah digital.</p>
                         <div class="spacer"></div>
                     </div>
-                    <div class="col-md-5 offset-md-1">
-                        <img src="{{asset('img/about.png')}}" class="abot" style="margin-top: -40px;">
+                    <div class="col-md-4 offset-md-1">
+                        <img src="{{asset('img/about.png')}}" class="abot" style="margin-top: -40px; width: 100%">
                         <div class="spacer d-block d-md-none"></div>
                     </div>
                 </div>
@@ -466,7 +466,7 @@
                     <div style="padding: 10px;">
                         <div class="card_portofolio">
                             <img src="{{asset($ty->image)}}" alt="logo">
-                            <p class="text-white text-semibold p-3 card_desc">
+                            <p class="text-white text-semibold px-3 pt-3 card_desc">
                                 {{$ty->type}}
                                 <span class="text-warning" style="float:right;">Rp.{{number_format($ty->price)}}/kg</span>
                             </p>
