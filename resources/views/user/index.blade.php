@@ -389,7 +389,7 @@
     }
     $(document).ready(function(){
         var no = 0;
-        var total = {{count(types)}};
+        var total = @php echo count($types)-1 @endphp;
         $('#add').click(function(){
             if(no+1 < total)
             {
