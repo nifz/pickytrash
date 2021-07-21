@@ -20,6 +20,7 @@ use Auth;
 use Hash;
 use DB;
 use Validator;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -545,8 +546,6 @@ class AdminController extends Controller
         
         $contact_us = new ContactUsReply;
         $contact_us->id_contact_us = $id_contact;
-        $contact_us->name = $req->name;
-        $contact_us->email = $req->email;
         $contact_us->id_users = Auth::user()->id;
         $contact_us->subject = $req->subject;
         $contact_us->message = $req->message;
@@ -560,6 +559,16 @@ class AdminController extends Controller
             ]);
 
         if($contact_us->save()){
+            Mail::send('email',[
+                'subjek' => $req->subject,
+                'pesan' => nl2br($req->message),
+            ],
+                function($message) use ($req)
+                {
+                    $message->subject('PickyTrash: '.$req->subject);
+                    $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+                    $message->to($req->email);
+                });
             return redirect()->route('admin.contact_us_list')->with('sukses','Berhasil mengirim balasan!');
         }
         return redirect()->route('admin.contact_us_list')->with('error','Gagal mengirim balasan!');

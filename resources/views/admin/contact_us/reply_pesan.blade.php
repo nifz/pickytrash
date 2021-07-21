@@ -63,7 +63,6 @@
                     <div class="form-group">
                         <label for="subject">Subject</label>
                         <input type="hidden" name="id" id="id" class="form-control" value="{{$data->id}}">
-                        <input type="hidden" name="name" id="name" class="form-control" value="{{$data->name}}">
                         <input type="hidden" name="email" id="email" class="form-control" value="{{$data->email}}">
                         <input type="text" name="subject" id="subject" class="form-control" placeholder="Masukkan subject" aria-describedby="subject" value="{{"Reply - ".$data->subject}}">
                     </div>
