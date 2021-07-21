@@ -150,7 +150,7 @@ body
     background-color: #333331;
 }
 .card.card-hero .card-header {
-    background-image: linear-gradient(to bottom, #333331, #000);
+    background-image: linear-gradient(to bottom, #333331, #333331);
 }
 .card.card-hero .card-header .card-icon, .card.card-hero .card-header h4, .card.card-hero .card-header .card-description {
     color: #333331;
