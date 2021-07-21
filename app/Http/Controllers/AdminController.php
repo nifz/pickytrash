@@ -600,11 +600,11 @@ class AdminController extends Controller
     {
         $data = DB::table('contact_us_reply')
             ->join('users','contact_us_reply.id_users','=','id_users')
-            ->join('contact_us','contact_us_reply.id_contact_us','=','id_contact_us')
+            ->join('contact_us','contact_us_reply.id_contact_us','=','contact_us.id')
             ->select(
                 'users.*',
                 'contact_us_reply.*',
-                'contact_us.id as id_contact_us',
+                'id_contact_us as contact_us.id',
                 'users.id as id_users',
                 'users.name as user_name',
                 'contact_us.name as name_contact_us',
