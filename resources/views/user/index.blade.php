@@ -130,11 +130,11 @@
         <div class="col-12 col-md-5">
             <div class="card card-hero">
                 <div class="card-header">
-                    <div class="card-icon">
+                    {{-- <div class="card-icon">
                         <i class="fas fa-recycle"></i>
-                    </div>
-                    <h4>{{$sum}}kg</h4>
-                    <div class="card-description">Sampah</div>
+                    </div> --}}
+                    <h4 class="text-white">{{$sum}}kg</h4>
+                    <div class="card-description text-white">Sampah</div>
                 </div>
                 <div class="card-body p-0">
                     <div class="tickets-list">

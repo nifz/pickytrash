@@ -150,7 +150,7 @@ body
     background-color: #333331;
 }
 .card.card-hero .card-header {
-    background-image: linear-gradient(to bottom, #F9F871, #ffffa4);
+    background-image: linear-gradient(to bottom, #333331, #000);
 }
 .card.card-hero .card-header .card-icon, .card.card-hero .card-header h4, .card.card-hero .card-header .card-description {
     color: #333331;
@@ -200,4 +200,12 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus
 .submitted {
     opacity: .5;
     cursor: not-allowed;
+}
+.page-link:hover {
+    background-color: #333331;
+    color: #fff !important;
+}
+.page-item .page-link {
+    color: #333331;
+    border-radius: 0;
 }
