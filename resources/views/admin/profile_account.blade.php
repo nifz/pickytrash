@@ -204,17 +204,11 @@
                 <div class="card card-hero">
                     <div class="card-header">
                         @if($user->role == 1)
-                            <div class="card-icon">
-                                <i class="fas fa-recycle"></i>
-                            </div>
-                            <h4>{{number_format($sum)}}</h4>
-                            <div class="card-description">Sampah</div>
+                            <h4 class="text-white">{{number_format($sum)}}</h4>
+                            <div class="card-description text-white">Sampah</div>
                             @else
-                            <div class="card-icon">
-                                <i class="fas fa-box-open"></i>
-                            </div>
-                            <h4>{{number_format(count($pickup))}}</h4>
-                            <div class="card-description">Pickup</div>
+                            <h4 class="text-white">{{number_format(count($pickup))}}</h4>
+                            <div class="card-description text-white">Pickup</div>
                         @endif
                     </div>
                     <div class="card-body p-0">
