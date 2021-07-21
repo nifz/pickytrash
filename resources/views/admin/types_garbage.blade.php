@@ -15,7 +15,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Jenis Sampah</th>
-                                <th>Harga/pcs</th>
+                                <th>Harga/kg</th>
                                 <th></th>
                             </tr>
                             </thead>
