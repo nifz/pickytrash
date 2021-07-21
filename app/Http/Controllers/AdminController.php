@@ -557,11 +557,15 @@ class AdminController extends Controller
             ])->update([
                 'is_reply' => 1,
             ]);
-
+        $messages = DB::Table('contact_us')->where('id',$id_contact)->first();
         if($contact_us->save()){
             Mail::send('email',[
                 'subjek' => $req->subject,
                 'pesan' => nl2br($req->message),
+                'created_at' => $messages->created_at,
+                'name' => $messages->name,
+                'email' => $messages->email,
+                'messages' => nl2br($messages->message),
             ],
                 function($message) use ($req)
                 {

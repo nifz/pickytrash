@@ -364,7 +364,17 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>@php echo $pesan; @endphp</p>
+                        <p>@php echo $pesan; @endphp
+                          <br>
+                          <br>
+                          On {{date('D, M d, Y', strtotime($created_at))}} at {{date('h:i A', strtotime($created_at))}} {{$name}} &lt;
+                          <a href="mailto:{{$email}}" target="_blank">{{$email}}</a>
+                          &gt; wrote:
+                          <br>
+                          <blockquote class="gmail_quote" style="margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+                                  {{$messages}}
+                          </blockquote>
+                        </p>
                       </td>
                     </tr>
                   </table>
