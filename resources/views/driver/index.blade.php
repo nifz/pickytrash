@@ -116,11 +116,8 @@
         <div class="col-12 col-md-5">
             <div class="card card-hero">
                 <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-box-open"></i>
-                        </div>
-                        <h4>{{number_format(count($pickup))}}</h4>
-                        <div class="card-description">Pickup</div>
+                        <h4 class="text-white">{{number_format(count($pickup))}}</h4>
+                        <div class="card-description text-white">Pickup</div>
                 </div>
                 <div class="card-body p-0">
                     <div class="tickets-list">
