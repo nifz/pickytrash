@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="card-icon shadow-secondary bg-secondary">
+                <div class="card-icon bg-secondary">
                     <i class="fas fa-box-open"></i>
                 </div>
                 <div class="card-wrap">
@@ -105,7 +105,7 @@
             <div class="card-chart">
                 <canvas id="garbage-chart" height="80"></canvas>
             </div>
-            <div class="card-icon shadow-secondary bg-secondary">
+            <div class="card-icon bg-secondary">
                 <i class="fas fa-recycle"></i>
             </div>
             <div class="card-wrap">
@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="card-icon shadow-secondary bg-secondary">
+                <div class="card-icon bg-secondary">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="card-wrap">
