@@ -555,7 +555,7 @@
                         </div>
                         <div class="col-8">
                             <h5 class="text-bold text-white">Rohman Beny R</h5>
-                            <span class="text-warning">UI / UX Designer</span>
+                            <span class="text-warning">UI/UX Designer</span>
                             <h6 class="mt-2 text-white">S1 Software Engineering</h6>
                         </div>
                     </div>
