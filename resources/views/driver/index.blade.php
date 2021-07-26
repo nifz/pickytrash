@@ -24,8 +24,8 @@
                             <div class="profile-widget-item-label">Saldo (Rp)</div>
                         </div>
                         <div class="profile-widget-item">
-                            <div class="profile-widget-item-value">0</div>
-                            <div class="profile-widget-item-label">Pertukaran</div>
+                            <div class="profile-widget-item-value">{{number_format(Wallet::withdrawal(Auth::user()->id),0)}}x</div>
+                            <div class="profile-widget-item-label">Penarikan Saldo</div>
                         </div>
                     </div>
                 </div>
