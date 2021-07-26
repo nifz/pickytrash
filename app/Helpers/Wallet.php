@@ -9,4 +9,20 @@ class Wallet {
         $wallet = DB::table('wallets')->where('id_users', $id_users)->first();
         return (isset($wallet->amount) ? $wallet->amount : '');
     }
+    public static function withdrawal($id_users) {
+        $bank = DB::Table('banks')->where('id_users',$id_users)->get();
+        $history = DB::Table('history_payments')->get();
+        $i = 0;
+        foreach($bank as $b)
+        {
+            foreach($history as $h)
+            {
+                if($b->id == $h->id_banks)
+                {
+                    $i++;
+                }
+            }
+        }
+        return $i;
+    }
 }
