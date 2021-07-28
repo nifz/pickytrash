@@ -51,7 +51,7 @@
                     </div>
                 @endif
                 <a class="dropdown-item has-icon" href="{{ route(Role::is().'.settings') }}" data-id="{{ Auth::id() }}">
-                    <i class="fas fa-cog"></i>Peraturan</a>
+                    <i class="fas fa-cog"></i>Pengaturan</a>
                 <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
