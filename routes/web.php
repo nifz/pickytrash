@@ -48,7 +48,6 @@ Route::group(['middleware'=>'isUser'],function(){
         Route::post('/settings', [HomeController::class, 'settings_store'])->name('user.settings.store');
         Route::post('/types', [UserController::class, 'types_store'])->name('user.types.store');
         Route::post('/profile_account_address', [UserController::class, 'profile_account_address_store'])->name('user.profile_account.address.store');
-        Route::get('/kocak/{id}', [UserController::class, 'profile_account_address_kocak'])->name('user.profile_account.address.kocak');
     });
 });
 
