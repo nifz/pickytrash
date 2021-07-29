@@ -1,16 +1,5 @@
 @extends('layouts.app')
 @section('title','Detail Pesan')
-@section('page_css')
-    <link rel="stylesheet" href="{{ asset('assets/css/datatables/datatables.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/datatables/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/datatables/select.bootstrap4.min.css')}}">
-@endsection
-@section('page_js')
-<script src="{{ asset('assets/js/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/js/datatables/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('assets/js/datatables/modules-datatables.js') }}"></script>
-
-@endsection
 @section('content')
 
 <div class="row ">
@@ -21,7 +10,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-inverse table-hover" id="table-1">
+                    <table class="table table-striped table-inverse table-hover">
                         <thead>                                 
                             <tr>
                                 <th>Pesan</th>
