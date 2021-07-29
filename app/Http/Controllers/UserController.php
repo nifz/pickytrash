@@ -110,13 +110,4 @@ class UserController extends Controller
                 ->first();
         return response()->json($addre);
     }
-    public function profile_account_address_kocak($id)
-    {
-        $addre = DB::Table('addresses')
-                ->join('indonesia_provinces','addresses.id_provinces','=','indonesia_provinces.id')
-                ->select('indonesia_provinces.name as province_name','indonesia_provinces.meta as province_meta')
-                ->where('addresses.id',$id)
-                ->first();
-        return response()->json($addre);
-    }
 }
